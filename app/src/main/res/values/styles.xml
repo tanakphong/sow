@@ -1,0 +1,128 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--Black-->
+    <style name="custom_black_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_black_background</item>
+    </style>
+
+    <style name="custom_black_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_black_textColor</item>
+    </style>
+    <!--White-->
+    <style name="custom_white_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_white_background</item>
+    </style>
+
+    <style name="custom_white_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_white_textColor</item>
+    </style>
+    <!--Red-->
+    <style name="custom_red_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_red_background</item>
+    </style>
+
+    <style name="custom_red_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_red_textColor</item>
+    </style>
+    <!--Green-->
+    <style name="custom_green_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_green_background</item>
+    </style>
+
+    <style name="custom_green_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_green_textColor</item>
+    </style>
+    <!--Blue-->
+    <style name="custom_blue_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_blue_background</item>
+    </style>
+
+    <style name="custom_blue_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_blue_textColor</item>
+    </style>
+    <!--Dark Blue-->
+    <style name="custom_darkblue_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_darkblue_background</item>
+    </style>
+
+    <style name="custom_darkblue_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_darkblue_textColor</item>
+    </style>
+    <!--Yellow-->
+    <style name="custom_yellow_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_yellow_background</item>
+    </style>
+
+    <style name="custom_yellow_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_yellow_textColor</item>
+    </style>
+    <!--Orange-->
+    <style name="custom_orange_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_orange_background</item>
+    </style>
+
+    <style name="custom_orange_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_orange_textColor</item>
+    </style>
+    <!--Pink-->
+    <style name="custom_pink_background" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/custom_pink_background</item>
+    </style>
+
+    <style name="custom_pink_textColor" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/custom_pink_textColor</item>
+    </style>
+
+    <!--Black-->
+    <style name="AppTheme.Black" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_black_background</item>
+        <item name="custom_textColor">@style/custom_black_textColor</item>
+    </style>
+    <!--White-->
+    <style name="AppTheme.White" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_white_background</item>
+        <item name="custom_textColor">@style/custom_white_textColor</item>
+    </style>
+    <!--Red-->
+    <style name="AppTheme.Red" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_red_background</item>
+        <item name="custom_textColor">@style/custom_red_textColor</item>
+    </style>
+    <!--Green-->
+    <style name="AppTheme.Green" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_green_background</item>
+        <item name="custom_textColor">@style/custom_green_textColor</item>
+    </style>
+    <!--Blue-->
+    <style name="AppTheme.Blue" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_blue_background</item>
+        <item name="custom_textColor">@style/custom_blue_textColor</item>
+    </style>
+    <!--Dark Blue-->
+    <style name="AppTheme.DarkBlue" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_darkblue_background</item>
+        <item name="custom_textColor">@style/custom_darkblue_textColor</item>
+    </style>
+    <!--Yellow-->
+    <style name="AppTheme.Yellow" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_yellow_background</item>
+        <item name="custom_textColor">@style/custom_yellow_textColor</item>
+    </style>
+    <!--Orange-->
+    <style name="AppTheme.Orange" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_orange_background</item>
+        <item name="custom_textColor">@style/custom_orange_textColor</item>
+    </style>
+    <!--Pink-->
+    <style name="AppTheme.Pink" parent="Theme.AppCompat.NoActionBar">
+        <item name="custom_background">@style/custom_pink_background</item>
+        <item name="custom_textColor">@style/custom_pink_textColor</item>
+    </style>
+</resources>

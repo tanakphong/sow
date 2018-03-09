@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding"
+    style="?custom_background"
+    tools:context="th.co.wesoft.sow.FoodCourtActivity">
+
+    <LinearLayout
+        android:id="@+id/layDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layFraMarquee"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/layVidView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FF000000"
+                tools:ignore="UselessParent">
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layTxtView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            android:orientation="vertical"
+            android:padding="@dimen/padding">
+
+            <TextView
+                android:id="@+id/lblCompName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7row_top"
+                style="?custom_textColor"
+                android:text="@string/comp_name"
+                android:textAlignment="center"
+                android:textSize="@dimen/h2" />
+
+            <TextView
+                android:id="@+id/lblProductOrService1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7row_top"
+                style="?custom_textColor"
+                android:text="@string/product_or_service"
+                android:textAlignment="center"
+                android:textSize="@dimen/h3" />
+
+            <TextView
+                android:id="@+id/lblCardNameValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7row_top"
+                style="?custom_textColor"
+                android:text="@string/card_name_value"
+                android:textSize="@dimen/h4" />
+
+            <TextView
+                android:id="@+id/lblCardTypeValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7row_top_medium"
+                style="?custom_textColor"
+                android:text="@string/card_type_value"
+                android:textSize="@dimen/h4" />
+
+            <TextView
+                android:id="@+id/lblCardDescValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7row_top_medium"
+                style="?custom_textColor"
+                android:text="@string/card_desc_value"
+                android:textSize="@dimen/h4" />
+
+            <LinearLayout
+                android:id="@+id/layUseView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7row_top"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layUse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblUse"
+                        style="?custom_textColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/use_header"
+                        android:textSize="@dimen/h3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layUseValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblUseValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        style="?custom_textColor"
+                        android:text="@string/use_value"
+                        android:textSize="@dimen/h3v" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layBalanceView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7row_top_medium"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layBalance"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblBalance"
+                        style="?custom_textColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/balance_header"
+                        android:textSize="@dimen/h3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layBalanceValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblBalanceValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        style="?custom_textColor"
+                        android:text="@string/use_value"
+                        android:textSize="@dimen/h3v" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layFraMarquee"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fra_marquee_high"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/fraMarquee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>

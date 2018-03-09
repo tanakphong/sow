@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">WSDv1.0</string>
+    <string name="image_folder">Photo</string>
+    <string name="vdo_folder">VDO</string>
+    <string name="marquee_folder">Marquee Folder :</string>
+    <string name="comp_name">Company Co.,Ltd.</string>
+    <string name="product_or_service">Check Point</string>
+    <string name="card_name_value">123456789</string>
+    <string name="card_type_value">VIP Card</string>
+    <string name="card_desc_value">Customer</string>
+    <string name="use_header">Use:</string>
+    <string name="use_value">9999.99</string>
+    <string name="balance_header">Balance</string>
+    <string name="smb_host">Host :</string>
+    <string name="smb_host_value">e.g. 192.168.0.1/SubFolder</string>
+    <string name="vdo_file">VDO Folder :</string>
+    <string name="vdo_file_value">VDO</string>
+    <string name="marquee_file">Marquee File :</string>
+    <string name="marquee_file_value">marquee.txt</string>
+    <string name="marquee_loop_value">1</string>
+    <string name="marquee_loop">Loop :</string>
+    <string name="product_type">Product Type :</string>
+    <string name="product_type_value">Product Type</string>
+    <string name="wcf_host">WCF Host :</string>
+    <string name="wcf_host_value">192.168.1.1</string>
+    <string name="wcf_post">Port :</string>
+    <string name="wcf_post_value">1002</string>
+    <string name="text_save">SAVE</string>
+    <string name="socket_port">Socket Port :</string>
+    <string name="socket_port_value">8889</string>
+    <string name="smb_host_error">Input SMB Host</string>
+    <string name="validate_text">Please Input</string>
+    <string name="smb_pass_value">Password</string>
+    <string name="smb_pass">Password :</string>
+    <string name="smb_user">User :</string>
+    <string name="smb_user_value">Username</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="image_file">Photo Folder :</string>
+    <string name="image_file_value">Photo</string>
+    <string name="is_image_file">Select :</string>
+    <string name="image">Image</string>
+    <string name="vdo">VDO</string>
+    <string name="encode_pwd">Encode PWD</string>
+    <string name="encode_pwd_value">admin</string>
+    <string name="dia_btn_ok">OK</string>
+    <string name="tte_login">Login</string>
+    <string name="tte_main">WSD v.1.0</string>
+    <string name="tte_setting">Setting</string>
+    <string name="theme">Theme :</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="msg_display">Please wait...</string>
+    <string name="imp_delimiter">Delimiter</string>
+    <string name="delimiter">Delimiter</string>
+    <string name="program_folder">Program Folder :</string>
+    <string name="program_folder_value">Programs</string>
+    <string name="marquee_folder_value">Marquee</string>
+    <string name="image_loop">Loop(Sec) :</string>
+    <string name="image_loop_value">10</string>
+    <string name="pwd_touch_lock">Password :</string>
+    <string name="pwd_touch_value">123456</string>
+    <string name="hint_scanner">Scan Barcode</string>
+    <string name="conf_language">Select Language</string>
+    <string name="conf_language_header">Language</string>
+    <string name="conf_lang_english">English</string>
+    <string name="conf_lang_thailand">Thai</string>
+    <string name="conf_shared">File Sharing and Folder</string>
+    <string name="conf_program">Select Program</string>
+    <string name="conf_wcf_service">Setting Service</string>
+    <string name="conf_server">Setting SocketServer</string>
+    <string name="conf_theme">Select Theme</string>
+    <string name="conf_touchlock">Setting Touchlock</string>
+
+    <string name="alert_card_not_found">Card not found.</string>
+
+    <string-array name="color_array">
+        <item>Black</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Dark Blue</item>
+        <item>Yellow</item>
+        <item>Orange</item>
+        <item>Pink</item>
+    </string-array>
+
+    <string-array name="delimiter_array">
+        <item>Comma</item>
+        <item>Tab</item>
+        <item>SemiColon</item>
+        <item>Space</item>
+        <item>Pipe</item>
+        <item>Manual</item>
+    </string-array>
+
+    <string-array name="programstype_array">
+        <item>WF-DISP-SHOP-FC</item>
+        <item>WF-DISP-SHOP-FL</item>
+        <item>WF-DISP-CASHIER</item>
+        <item>WF-CHECKPOINT-FC</item>
+        <item>WF-CHECKPOINT-FL</item>
+        <item>WP-CHECKPOINT</item>
+        <item>WP-DISP-POS</item>
+    </string-array>
+
+</resources>

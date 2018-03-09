@@ -1,0 +1,110 @@
+<resources>
+   <string name="app_name">WSDv1.0</string>
+    <string name="conf_language">เลือกภาษา</string>
+    <string name="conf_language_header">ภาษา</string>
+    <string name="conf_lang_english">อังกฤษ</string>
+    <string name="conf_lang_thailand">ไทย</string>
+    <string name="conf_shared">จัดการไฟล์แชร์ และ โฟลเดอร์</string>
+    <string name="smb_host">ที่อยู่ไฟล์ :</string>
+    <string name="smb_host_value">ตัวอย่าง 192.168.0.1/Sub Folder</string>
+    <string name="smb_user">ชื่อผู้ใช้ :</string>
+    <string name="smb_user_value">ชื่อผู้ใช้</string>
+    <string name="smb_pass">รหัสผ่าน :</string>
+    <string name="smb_pass_value">รหัสผ่าน :</string>
+    <string name="is_image_file">เลือก :</string>
+    <string name="image">รูปภาพ</string>
+    <string name="vdo">วีดีโอ</string>
+    <string name="program_folder">โฟลเดอร์โปรแกรม :</string>
+    <string name="program_folder_value">Programs</string>
+    <string name="image_folder">โฟลเดอร์รูปภาพ</string>
+    <string name="image_file">โฟลเดอร์รูปภาพ :</string>
+    <string name="image_file_value">Photo</string>
+    <string name="image_loop">ซ้ำ(วินาที) :</string>
+    <string name="image_loop_value">10</string>
+    <string name="vdo_folder">โฟลเดอร์วีดีโอ</string>
+    <string name="vdo_file">โฟลเดอร์วีดีโอ :</string>
+    <string name="vdo_file_value">VDO</string>
+    <string name="marquee_folder">โฟลเดอร์ข้อความวิ่ง :</string>
+    <string name="marquee_folder_value">Marquee</string>
+    <string name="marquee_file">ไฟล์ข้อความวิ่ง :</string>
+    <string name="marquee_file_value">marquee.txt</string>
+    <string name="marquee_loop">ซ้ำ :</string>
+    <string name="marquee_loop_value">1</string>
+
+
+    <string name="imp_delimiter">ตัวแบ่ง</string>
+    <string name="delimiter">กำหนดเอง</string>
+
+    <string name="comp_name">ชื่อบริษัท</string>
+    <string name="product_or_service">จุดบริการ</string>
+    <string name="card_name_value">123456789</string>
+    <string name="card_type_value">บัตรวีไอพี</string>
+    <string name="card_desc_value">ลูกค้า</string>
+    <string name="use_header">ยอดใช้งาน :</string>
+    <string name="use_value">9999.99</string>
+    <string name="balance_header">คงเหลือ</string>
+    <string name="product_type">โปรแกรม :</string>
+    <string name="product_type_value">Product Type</string>
+    <string name="wcf_host">IP เครื่อง Service :</string>
+    <string name="wcf_host_value">192.168.1.1</string>
+    <string name="wcf_post">พอร์ต :</string>
+    <string name="wcf_post_value">1002</string>
+    <string name="text_save">บันทึก</string>
+    <string name="socket_port">พอร์ต :</string>
+    <string name="socket_port_value">8889</string>
+    <string name="smb_host_error">Input SMB Host</string>
+    <string name="validate_text">จำเป็นต้องกรอก</string>
+    <string name="encode_pwd">อักษรเข้ารหัส</string>
+    <string name="encode_pwd_value">admin</string>
+    <string name="dia_btn_ok">ตกลง</string>
+    <string name="tte_login">เข้าสู่ระบบ</string>
+    <string name="tte_main">WSD v.1.0</string>
+    <string name="tte_setting">ตั้งค่า</string>
+    <string name="theme">ธีม :</string>
+    <string name="please_wait">กรุณารอสักครู่...</string>
+    <string name="msg_display">กรุณารอสักครู่...</string>
+    <string name="pwd_touch_lock">รหัสผ่านล็อกทัชสกรีน :</string>
+    <string name="pwd_touch_value">123456</string>
+    <string name="hint_scanner">แสกนบาร์โค๊ด</string>
+    <string name="conf_program">เลือกโปรแกรม</string>
+    <string name="conf_wcf_service">กำหนดค่า Service</string>
+    <string name="conf_server">กำหนดค่า Socket Server</string>
+    <string name="conf_theme">เลือกธีม</string>
+    <string name="conf_touchlock">กำหนดค่า Touchlock</string>
+
+    <string name="alert_card_not_found">ไม่พบบัตร</string>
+
+
+
+    <string-array name="color_array">
+        <item>Black</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Dark Blue</item>
+        <item>Yellow</item>
+        <item>Orange</item>
+        <item>Pink</item>
+    </string-array>
+
+    <string-array name="delimiter_array">
+        <item>Comma</item>
+        <item>Tab</item>
+        <item>SemiColon</item>
+        <item>Space</item>
+        <item>Pipe</item>
+        <item>Manual</item>
+    </string-array>
+
+    <string-array name="programstype_array">
+        <item>WF-DISP-SHOP-FC</item>
+        <item>WF-DISP-SHOP-FL</item>
+        <item>WF-DISP-CASHIER</item>
+        <item>WF-CHECKPOINT-FC</item>
+        <item>WF-CHECKPOINT-FL</item>
+        <item>WP-CHECKPOINT</item>
+        <item>WP-DISP-POS</item>
+    </string-array>
+
+</resources>

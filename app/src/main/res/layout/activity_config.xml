@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="th.co.wesoft.sow.ConfigActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/layAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/conf_language"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/layLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layLanguageHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblLanguageHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/conf_language_header"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layLanguageValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rdoEnglish"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:onClick="ChangeLanguage"
+                            android:text="@string/conf_lang_english"
+                            android:textSize="@dimen/config_h2" />
+
+                        <RadioButton
+                            android:id="@+id/rdoThailand"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:onClick="ChangeLanguage"
+                            android:text="@string/conf_lang_thailand"
+                            android:textSize="@dimen/config_h2" />
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/conf_shared"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/laySMBServer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/laySMBServerHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblSMBServer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/smb_host"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/laySMBServerValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtSMBServer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/smb_host_value"
+                        android:inputType="textPersonName"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/laySMBUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/laySMBUserHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblSMBUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/smb_user"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/laySMBUserValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtSMBUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/smb_user_value"
+                        android:inputType="textPersonName"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/laySMBPass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/laySMBPassHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblSMBPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/smb_pass"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/laySMBPassValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtSMBPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/smb_pass_value"
+                        android:inputType="textPassword"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layIsImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layIsImageHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblIsImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/is_image_file"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layIsImageValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rdoImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/image"
+                            android:textSize="@dimen/config_h2" />
+
+                        <RadioButton
+                            android:id="@+id/rdoVDO"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/vdo"
+                            android:textSize="@dimen/config_h2" />
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layProgramFolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layProgramFolderHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbProgramFolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/program_folder"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layProgramFolderValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtProgramFolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/program_folder_value"
+                        android:inputType="textPersonName"
+                        android:text="@string/program_folder_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layImageFile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layImageFileHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.34"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblImageFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/image_file"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layImageFileValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtImageFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/image_file_value"
+                        android:inputType="textPersonName"
+                        android:text="@string/image_file_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layImageLoopHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblImageLoop"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/image_loop"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layImageLoopValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtImageLoop"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/image_loop_value"
+                        android:inputType="phone"
+                        android:text="@string/image_loop_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layVDOFile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layVDOFileHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblVDOFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/vdo_file"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layVDOFileValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtVDOFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/vdo_file_value"
+                        android:inputType="textPersonName"
+                        android:text="@string/vdo_file_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layMarqueeFolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layMarqueeFolderHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblMarqueeFolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/marquee_folder"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layMarqueeFolderValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtMarqueeFolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/marquee_folder_value"
+                        android:inputType="textPersonName"
+                        android:text="@string/marquee_folder_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layMarQueeFile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layMarQueeFileHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.34"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblMarQueeFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/marquee_file"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layMarQueeFileValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtMarQueeFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/marquee_file_value"
+                        android:inputType="textPersonName"
+                        android:text="@string/marquee_file_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layMarQueeLoopHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblMarQueeLoop"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/marquee_loop"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layMarQueeLoopValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtMarQueeLoop"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/marquee_loop_value"
+                        android:inputType="phone"
+                        android:text="@string/marquee_loop_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layMarqueeSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layMarqueeSpeedHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblMarqueeSpeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/marquee_folder"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layMarqueeSpeedValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <SeekBar
+                        android:id="@+id/sbMarqueeSpeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:max="10"
+                        android:progress="1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/conf_program"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/layProductType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layProductTypeHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblProductType"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/product_type"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layProductTypeValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/txtProductType"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/text_height"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:hint="@string/product_type_value"-->
+                    <!--android:inputType="textPersonName"-->
+                    <!--android:textSize="@dimen/config_h2" />-->
+                    <Spinner
+                        android:id="@+id/spnProductType"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvWCFHost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/conf_wcf_service"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/layWCFHost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layWCFHostHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.34"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblWCFHost"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/wcf_host"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layWCFHostValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtWCFHost"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/wcf_host_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layWCFPostHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblWCFPost"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/wcf_post"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layWCFPostValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtWCFPost"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/wcf_post_value"
+                        android:inputType="number"
+                        android:text="@string/wcf_post_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layEncodePWD"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layEncodePWDHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblEncodePWD"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/encode_pwd"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layEncodePWDValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtEncodePWD"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/encode_pwd_value"
+                        android:inputType="textPassword"
+                        android:text="@string/encode_pwd_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSocketPort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/conf_server"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/laySocketPort"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/laySocketPortHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblSocketPort"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/socket_port"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/laySocketPortValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtSocketPort"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/socket_port_value"
+                        android:inputType="phone"
+                        android:text="@string/socket_port_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/laySocketDelimiter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.24">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/imp_delimiter"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.18"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/delimiter_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.22"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtDelimiter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/delimiter"
+                        android:inputType="textPersonName"
+                        android:text="@string/delimiter"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/conf_theme"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/layTheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layThemeHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/theme"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layThemeValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spnColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/conf_touchlock"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+
+            <LinearLayout
+                android:id="@+id/layPwdTouchLock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:id="@+id/layPwdTouchLockHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblPwdTouchLock"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:text="@string/pwd_touch_lock"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layPwdTouchLockValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtPwdTouchLock"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_height"
+                        android:gravity="center_vertical"
+                        android:hint="@string/pwd_touch_value"
+                        android:inputType="textPersonName"
+                        android:text="@string/pwd_touch_value"
+                        android:textSize="@dimen/config_h2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/padding16"
+                android:text="@string/text_save"
+                android:textColor="@color/textForColorPrimary"
+                android:textSize="@dimen/config_h2" />
+
+            <!--<Button-->
+            <!--android:id="@+id/btnRead"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="Read"-->
+            <!--android:textSize="@dimen/config_h2"-->
+            <!--android:textColor="@color/textForColorPrimary"-->
+            <!--android:padding="@dimen/padding16"/>-->
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

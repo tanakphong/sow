@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--AppTheme-->
+    <color name="colorPrimary">#00897b</color>
+    <color name="colorPrimaryDark">#005b4f</color>
+    <color name="colorPrimaryLight">#4ebaaa</color>
+    <color name="colorAccent">#005b4f</color>
+    <color name="textForColorPrimary">#ffffff</color>
+
+    <color name="color_gray">#B4B4B4</color>
+    <color name="color_green">#00b4aa</color>
+    <color name="color_red">#FF6A6E</color>
+    <color name="color_red_light">#FFB4B6</color>
+    <color name="color_blue">#03A9F4</color>
+    <color name="color_gray_light">#F5F5F5</color>
+
+    <!--Black White Red Green Blue Dark Blue Yellow Orange Pink-->
+    <!--Black-->
+    <color name="custom_black_background">#212121</color>
+    <color name="custom_black_textColor">#ffffff</color>
+    <!--White-->
+    <color name="custom_white_background">#fafafa</color>
+    <color name="custom_white_textColor">#000000</color>
+    <!--Red-->
+    <color name="custom_red_background">#b71c1c</color>
+    <color name="custom_red_textColor">#ffffff</color>
+    <!--Green-->
+    <color name="custom_green_background">#2e7d32</color>
+    <color name="custom_green_textColor">#ffffff</color>
+    <!--Blue-->
+    <color name="custom_blue_background">#1565c0</color>
+    <color name="custom_blue_textColor">#ffffff</color>
+    <!--Dark Blue-->
+    <color name="custom_darkblue_background">#000051</color>
+    <color name="custom_darkblue_textColor">#ffffff</color>
+    <!--Yellow-->
+    <color name="custom_yellow_background">#fdd835</color>
+    <color name="custom_yellow_textColor">#000000</color>
+    <!--Orange-->
+    <color name="custom_orange_background">#ef6c00</color>
+    <color name="custom_orange_textColor">#000000</color>
+    <!--Pink-->
+    <color name="custom_pink_background">#ec407a</color>
+    <color name="custom_pink_textColor">#000000</color>
+</resources>

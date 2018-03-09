@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="h2">20sp</dimen>
+    <dimen name="h3">18sp</dimen>
+    <dimen name="h4">16sp</dimen>
+    <dimen name="h3v">24sp</dimen>
+    <dimen name="padding">2sp</dimen>
+    <dimen name="text_height">48dp</dimen>
+    <dimen name="padding16">16dp</dimen>
+    <!--<dimen name="paddingT">2dp</dimen>-->
+    <!--<dimen name="marginT">8dp</dimen>-->
+    <!--<dimen name="marginTM">4dp</dimen>-->
+    <!--<dimen name="marginB">8dp</dimen>-->
+    <!--<dimen name="marginBM">4dp</dimen>-->
+
+    <dimen name="margin_8row_top">12dp</dimen>
+    <dimen name="margin_8row_top_medium">8dp</dimen>
+
+    <dimen name="margin_7row_top">22dp</dimen>
+    <dimen name="margin_7row_top_medium">18dp</dimen>
+
+    <dimen name="margin_6row_top">18dp</dimen>
+    <dimen name="margin_6row_top_medium">14dp</dimen>
+
+    <dimen name="margin_9row_top">6dp</dimen>
+    <dimen name="margin_9row_top_medium">4dp</dimen>
+
+    <dimen name="config_h2">20sp</dimen>
+    <dimen name="mg24">24dp</dimen>
+    <dimen name="fra_marquee_high">30dp</dimen>
+</resources>
