@@ -218,25 +218,25 @@ public class FoodCourtActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        outState.putParcelable(DISPLAY, display);
+//        outState.putParcelable(DISPLAY, display);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        display = savedInstanceState.getParcelable(DISPLAY);
-
-        mLblCompName.setText(display.getLine1());
-        mLblProductOrService1.setText(display.getLine2());
-        mLblProductOrService2.setText(display.getLine3());
-        mLblCardNameValue.setText(display.getLine4());
-        mLblCardTypeValue.setText(display.getLine5());
-        mLblCardDescValue.setText(display.getLine6());
-        mLblUse.setText(display.getLine71());
-        mLblUseValue.setText(display.getLine72());
-        mLblBalance.setText(display.getLine81());
-        mLblBalanceValue.setText(display.getLine82());
+//        display = savedInstanceState.getParcelable(DISPLAY);
+//
+//        mLblCompName.setText(display.getLine1());
+//        mLblProductOrService1.setText(display.getLine2());
+//        mLblProductOrService2.setText(display.getLine3());
+//        mLblCardNameValue.setText(display.getLine4());
+//        mLblCardTypeValue.setText(display.getLine5());
+//        mLblCardDescValue.setText(display.getLine6());
+//        mLblUse.setText(display.getLine71());
+//        mLblUseValue.setText(display.getLine72());
+//        mLblBalance.setText(display.getLine81());
+//        mLblBalanceValue.setText(display.getLine82());
     }
 
     public static String readTextFilePath(String path, int loop) {

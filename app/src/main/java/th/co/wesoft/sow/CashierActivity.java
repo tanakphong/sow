@@ -8,7 +8,6 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -85,7 +84,17 @@ public class CashierActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cashier);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        display = new Display();
+//        Display person = new Display("ชื่อร้านค้า","สินค้า/บริการ 1","สินค้า/บริการ 2");
+//        Parcelable wrapped = Parcels.wrap(person);
+//
+//        Display person2 = Parcels.unwrap(wrapped);
+//        Log.d(TAG, "onCreate: "+person2.getLine1());
+//        Log.d(TAG, "onCreate: "+person2.getLine2());
+//        Log.d(TAG, "onCreate: "+person2.getLine3());
+//
+        if (savedInstanceState == null) {
+            display = new Display();
+        }
 
         hideSystemUI(lockScreen);
 //        blockTouch(lockScreen);
@@ -165,6 +174,15 @@ public class CashierActivity extends AppCompatActivity {
                     Log.i(TAG, String.format("line[%s]: %s", String.valueOf(i), line[i]));
                 }
                 if (line.length == 9) {
+                    display.setLine1(line[0]);
+                    display.setLine2(line[1]);
+                    display.setLine4(line[2]);
+                    display.setLine5(line[3]);
+                    display.setLine6(line[4]);
+                    display.setLine71(line[6]);
+                    display.setLine72(line[7]);
+                    display.setLine81(line[8]);
+                    display.setLine82(line[8]);
 //                    display = new Display(line[0], line[1], line[3], line[4],
 //                            line[5], line[6], line[7], line[8], line[9]);
                     mLblCompName.setText(line[0]);
@@ -251,25 +269,26 @@ public class CashierActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-//        display = savedInstanceState.getParcelable(DISPLAY);
-//        Log.d(TAG, "onRestoreInstanceState: " + display.getLine1());
+        display = savedInstanceState.getParcelable(DISPLAY);
+//        display = Parcels.unwrap(savedInstanceState.getParcelable(DISPLAY));
 
-//        mLblCompName.setText(display.getLine1());
-//        mLblProductOrService1.setText(display.getLine2());
-//
-//        mLblCardNameValue.setText(display.getLine4());
-//        mLblCardTypeValue.setText(display.getLine5());
-//        mLblCardDescValue.setText(display.getLine6());
-//        mLblUse.setText(display.getLine71());
-//        mLblUseValue.setText(display.getLine72());
-//        mLblBalance.setText(display.getLine81());
-//        mLblBalanceValue.setText(display.getLine82());
+        mLblCompName.setText(display.getLine1());
+        mLblProductOrService1.setText(display.getLine2());
+
+        mLblCardNameValue.setText(display.getLine4());
+        mLblCardTypeValue.setText(display.getLine5());
+        mLblCardDescValue.setText(display.getLine6());
+        mLblUse.setText(display.getLine71());
+        mLblUseValue.setText(display.getLine72());
+        mLblBalance.setText(display.getLine81());
+        mLblBalanceValue.setText(display.getLine82());
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-//        outState.putParcelable(DISPLAY, display);
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable(DISPLAY, display);
+//        outState.putParcelable("DISPLAY", Parcels.wrap(display));
+        super.onSaveInstanceState(outState);
     }
 
     private void openFragment(Fragment fragment) {
