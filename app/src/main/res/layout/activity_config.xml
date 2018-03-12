@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
     tools:context="th.co.wesoft.sow.ConfigActivity">
 
     <ScrollView
@@ -602,12 +603,26 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
+                    <TextView
+                        android:id="@+id/sb_value"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
                     <SeekBar
                         android:id="@+id/sbMarqueeSpeed"
+                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:max="10"
-                        android:progress="1" />
+                        android:max="@integer/max_speed" />
+
+                    <!--<org.florescu.android.rangeseekbar.RangeSeekBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        rsb:absoluteMaxValue="10"
+                        rsb:absoluteMinValue="1"
+                        rsb:singleThumb="true"/>-->
                 </LinearLayout>
             </LinearLayout>
 

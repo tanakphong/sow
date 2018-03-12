@@ -61,6 +61,7 @@ public class ConfigActivity extends AppCompatActivity {
     private TextView mTvSocketPort;
     private SeekBar marqueeSpeed;
     private int speed;
+    private TextView marqueeSpeedValue;
     //    private String theme;
 //    private String delimiter;
 
@@ -117,14 +118,16 @@ public class ConfigActivity extends AppCompatActivity {
         mTxtSocketPort = (EditText) findViewById(R.id.txtSocketPort);
         mTxtPwdTouchLock = (EditText) findViewById(R.id.txtPwdTouchLock);
 
+        marqueeSpeedValue = (TextView) findViewById(R.id.sb_value);
         marqueeSpeed = (SeekBar) findViewById(R.id.sbMarqueeSpeed);
 
         marqueeSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
+//            int progressChangedValue = 0;
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChangedValue = progress;
-                speed = progress;
+//                progressChangedValue = progress;
+//                speed = progress;
+                marqueeSpeedValue.setText(String.valueOf(progress));
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -132,7 +135,12 @@ public class ConfigActivity extends AppCompatActivity {
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(ConfigActivity.this, progressChangedValue, Toast.LENGTH_SHORT).show();
+                if (seekBar.getProgress() < 1) {
+                    seekBar.setProgress(1);
+                }
+                marqueeSpeedValue.setText(String.valueOf(seekBar.getProgress()));
+                Toast.makeText(ConfigActivity.this, String.valueOf(seekBar.getProgress()), Toast.LENGTH_SHORT).show();
+
             }
         });
 

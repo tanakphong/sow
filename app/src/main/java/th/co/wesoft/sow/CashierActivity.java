@@ -138,7 +138,7 @@ public class CashierActivity extends AppCompatActivity {
 
         //setEvent
         File file_marquee = new File(SDCardMarqueefile);
-        float speed = 0.08f;//8 / 100;//Prefs.getInt(ConfigBean.COLUMN_MARQUEE_SPEED, 8) / 100.00;
+        float speed = (float) Prefs.getInt(ConfigBean.COLUMN_MARQUEE_SPEED, 8) / 100;
         Log.d(TAG, "COLUMN_MARQUEE_SPEED: " + Prefs.getInt(ConfigBean.COLUMN_MARQUEE_SPEED, 8));
         Log.d(TAG, "Speed: " + speed);
         if (file_marquee.exists()) {
