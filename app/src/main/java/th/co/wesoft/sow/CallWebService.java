@@ -94,20 +94,22 @@ public class CallWebService {
             }
 //            Log.i("dlg", "soap request " + androidHttpTransport.requestDump);
 //            Log.i("dlg", "soap response" + androidHttpTransport.responseDump);
-            return "{\"Return\":\"" + String.valueOf(soapObj.getProperty(0)) + "\",\"Exception\":\"" + String.valueOf(soapObj.getProperty(1)) + "\",\"Data\":" + table + "}";
+            return "{\"Return\":" + String.valueOf(soapObj.getProperty(0)) + ",\"Exception\":\"" + String.valueOf(soapObj.getProperty(1)) + "\",\"Data\":" + table + "}";
         } catch (ConnectException aE) {
             Log.i("dlg", "ConnectException " + aE.toString());
-            return "{\"Return\":\"false\",\"Exception\":\"Can't connect to WF Service.\",\"Data\":\"\"}";
+            return "{\"Return\":false,\"Exception\":\"Can't connect to WF Service.\",\"Data\":\"\"}";
         } catch (ClassCastException aE) {
             Log.i("dlg", "ClassCastException " + aE.toString());
-            return "{\"Return\":\"false\",\"Exception\":\"Function not found.\",\"Data\":\"\"}";
+            return "{\"Return\":false,\"Exception\":\"Function not found.\",\"Data\":\"\"}";
         } catch (SocketTimeoutException aE) {
             Log.i("dlg", "SocketTimeoutException " + aE.toString());
-            return "{\"Return\":\"false\",\"Exception\":\"Time out.\",\"Data\":\"\"}";
+//            return "{\"Return\":\"false\",\"Exception\":\"Time out.\",\"Data\":\"\"}";
+            return "{\"Return\":false,\"Exception\":\"Can't connect to WF Service.\",\"Data\":\"\"}";
         } catch (Exception aE) {
             Log.i("dlg", "Exception " + aE.toString());
 //            return "{\"Return\":\"false\",\"Exception\":\""+aE.getMessage()+"\"}";
-            return "{\"Return\":\"false\",\"Exception\":\"+aE.getMessage()+\",\"Data\":\"\"}";
+//            return "{\"Return\":\"false\",\"Exception\":\"+aE.getMessage()+\",\"Data\":\"\"}";
+            return "{\"Return\":false,\"Exception\":\"Can't connect to WF Service.\",\"Data\":\"\"}";
         }
 
     }
@@ -181,4 +183,98 @@ public class CallWebService {
         }
     }
 
+    public static String GetDataRep_ProdInfoJS(String host, String port, String encode_pwd, String deviceId, String barcode) {
+
+        String URL = "http://" + host + ":" + port + "/WPservice20?wsdl";
+        String SOAP_ACTION = "http://tempuri.org/IWPServiceV20/GetDataRep_ProdInfoJS";
+        String OPERATION_NAME = "GetDataRep_ProdInfoJS";
+        SoapObject request = new SoapObject(NAMESPACE, OPERATION_NAME);
+        request.addProperty("encodePWD", encode_pwd);
+        request.addProperty("DeviceID", deviceId);
+        request.addProperty("Barcode", barcode);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.bodyOut = request;
+        HttpsUtil.allowAllSSL();
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL, TIMEOUT);
+        androidHttpTransport.debug = true;
+
+        try {
+            androidHttpTransport.reset();
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject soapObj = (SoapObject) envelope.bodyIn;
+
+//            Log.d("dlg", "GetDataRep_ProdInfoJS: "+soapObj);
+
+            String table;
+            try {
+                JSONObject tables = new JSONObject(String.valueOf(soapObj.getProperty(1)));
+                table = tables.getString("Table");
+                table = table.substring(1, table.length() - 1);
+//                Log.d("dlg", "table : " + table);
+            } catch (JSONException aE) {
+                table = "\"\"";
+            }
+            return "{\"Return\":true" +
+                    ",\"Exception\":\"" + soapObj.getProperty(2).toString().replace("anyType{}","") +
+                    "\",\"Data\":" + table +
+                    "}";
+        } catch (ConnectException aE) {
+            Log.i("dlg", "ConnectException: " + aE.toString());
+//            return "{\"Return\":\"false\",\"Exception\":\"Can't connect to WP Service.\"}";
+            return "{\"Return\":false,\"Exception\":\"failed to connect to /" + host + " (port " + port + ")\"}";
+        } catch (ClassCastException aE) {
+            Log.i("dlg", "ClassCastException: " + aE.toString());
+            return "{\"Return\":false,\"Exception\":\"Function not found.\"}";
+        } catch (SocketTimeoutException aE) {
+            Log.i("dlg", "SocketTimeoutException: " + aE.toString());
+//            return "{\"Return\":\"true\",\"Exception\":\"Time out.\"}";
+            return "{\"Return\":false,\"Exception\":\"failed to connect to /" + host + " (port " + port + ")\"}";
+        } catch (Exception aE) {
+            Log.i("dlg", "Exception: " + aE.toString());
+//            return "{\"Return\":\"true\",\"Exception\":\"+aE.getMessage()+\"}";
+            return "{\"Return\":false,\"Exception\":\"failed to connect to /" + host + " (port " + port + ")\"}";
+        }
+    }
+
+    public static String CloseLicModule(String host, String port, String encode_pwd, String deviceId) {
+
+        String URL = "http://" + host + ":" + port + "/WPservice20?wsdl";
+        String SOAP_ACTION = "http://tempuri.org/IWPServiceV20/CloseLicModule";
+        String OPERATION_NAME = "CloseLicModule";
+        SoapObject request = new SoapObject(NAMESPACE, OPERATION_NAME);
+        request.addProperty("encodePWD", encode_pwd);
+        request.addProperty("DeviceID", deviceId);
+        request.addProperty("MyModule", 21);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = true;
+        envelope.bodyOut = request;
+        HttpsUtil.allowAllSSL();
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL, TIMEOUT);
+        androidHttpTransport.debug = true;
+
+        try {
+            androidHttpTransport.reset();
+            androidHttpTransport.call(SOAP_ACTION, envelope);
+            SoapObject soapObj = (SoapObject) envelope.bodyIn;
+
+            return "{\"Return\":true" +
+                    ",\"Exception\":\"" + soapObj.getProperty(1).toString().replace("anyType{}","") +
+                    "\"}";
+        } catch (ConnectException aE) {
+            Log.i("dlg", "ConnectException: " + aE.toString());
+            return "{\"Return\":false,\"Exception\":\"failed to connect to /" + host + " (port " + port + ")\"}";
+        } catch (ClassCastException aE) {
+            Log.i("dlg", "ClassCastException: " + aE.toString());
+            return "{\"Return\":false,\"Exception\":\"Function not found.\"}";
+        } catch (SocketTimeoutException aE) {
+            Log.i("dlg", "SocketTimeoutException: " + aE.toString());
+            return "{\"Return\":false,\"Exception\":\"failed to connect to /" + host + " (port " + port + ")\"}";
+        } catch (Exception aE) {
+            Log.i("dlg", "Exception: " + aE.toString());
+            return "{\"Return\":false,\"Exception\":\"failed to connect to /" + host + " (port " + port + ")\"}";
+        }
+    }
 }

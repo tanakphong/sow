@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,9 +21,22 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mTxtUsername = (EditText) findViewById(R.id.txtUsername);
-        mTxtPassword = (EditText) findViewById(R.id.txtPassword);
-        mBtnLogin = (AppCompatButton) findViewById(R.id.btnLogin);
+        mTxtUsername =  findViewById(R.id.txtUsername);
+        mTxtPassword =  findViewById(R.id.txtPassword);
+        mBtnLogin =  findViewById(R.id.btnLogin);
+
+
+        mTxtPassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    mBtnLogin.callOnClick();
+                    return true;
+                }
+                return false;
+            }
+        });
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -118,6 +118,8 @@ public class CashierActivity extends AppCompatActivity {
         mLblBalance = (TextView) findViewById(R.id.lblBalance);
         mLblBalanceValue = (TextView) findViewById(R.id.lblBalanceValue);
 
+
+
         mFragment = findViewById(R.id.fragment);
 
         mFragment.setOnTouchListener(new View.OnTouchListener() {
@@ -179,12 +181,11 @@ public class CashierActivity extends AppCompatActivity {
                     display.setLine4(line[2]);
                     display.setLine5(line[3]);
                     display.setLine6(line[4]);
-                    display.setLine71(line[6]);
-                    display.setLine72(line[7]);
-                    display.setLine81(line[8]);
+                    display.setLine71(line[5]);
+                    display.setLine72(line[6]);
+                    display.setLine81(line[7]);
                     display.setLine82(line[8]);
-//                    display = new Display(line[0], line[1], line[3], line[4],
-//                            line[5], line[6], line[7], line[8], line[9]);
+
                     mLblCompName.setText(line[0]);
                     mLblProductOrService1.setText(line[1]);
                     mLblCardNameValue.setText(line[2]);
@@ -271,6 +272,7 @@ public class CashierActivity extends AppCompatActivity {
 
         display = savedInstanceState.getParcelable(DISPLAY);
 //        display = Parcels.unwrap(savedInstanceState.getParcelable(DISPLAY));
+        Log.d(TAG, "onRestoreInstanceState: " + display.getLine1());
 
         mLblCompName.setText(display.getLine1());
         mLblProductOrService1.setText(display.getLine2());
@@ -287,6 +289,7 @@ public class CashierActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelable(DISPLAY, display);
+        Log.d(TAG, "onSaveInstanceState: " + display.getLine1());
 //        outState.putParcelable("DISPLAY", Parcels.wrap(display));
         super.onSaveInstanceState(outState);
     }

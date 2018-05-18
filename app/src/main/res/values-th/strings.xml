@@ -35,14 +35,6 @@
     <string name="imp_delimiter">ตัวแบ่ง</string>
     <string name="delimiter">กำหนดเอง</string>
 
-    <string name="comp_name">ชื่อบริษัท</string>
-    <string name="product_or_service">จุดบริการ</string>
-    <string name="card_name_value">123456789</string>
-    <string name="card_type_value">บัตรวีไอพี</string>
-    <string name="card_desc_value">ลูกค้า</string>
-    <string name="use_header">ยอดใช้งาน :</string>
-    <string name="use_value">9999.99</string>
-    <string name="balance_header">คงเหลือ</string>
     <string name="product_type">โปรแกรม :</string>
     <string name="product_type_value">Product Type</string>
     <string name="wcf_host">IP เครื่อง Service :</string>
@@ -73,7 +65,8 @@
     <string name="conf_touchlock">กำหนดค่า Touchlock</string>
 
     <string name="alert_card_not_found">ไม่พบบัตร</string>
-
+    <string name="alert_barcode_not_found">Barcode not found.</string>
+    <string name="scan_barcode">Scan Barcode</string>
 
 
     <string-array name="color_array">

@@ -1,21 +1,28 @@
 package th.co.wesoft.sow;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,9 +32,10 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.pixplicity.easyprefs.library.Prefs;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,28 +46,182 @@ import java.io.InputStreamReader;
 import th.co.wesoft.sow.Class.MyContextWrapper;
 import th.co.wesoft.sow.Class.Utils;
 
+import static android.Manifest.permission.GET_ACCOUNTS;
+import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
 
 public class CheckPriceActivity extends AppCompatActivity {
 
-    private VideoView mVideoView;
-    private TextView mLblCardDesc;
-    private TextView mLblCompName;
+    public static final int RequestPermissionCode = 1;
+
     private TextView mLblCardNameValue;
     private TextView mLblCardTypeValue;
     private TextView mLblCardDescValue;
     private TextView mLblBalance;
     private TextView mLblBalanceValue;
-    private EditText mTxtBarcode;
-    private MarqueeTextFragment marqueeTextFragment;
-    private SimpleTCPServer server;
-    private int SocketPort;
-    private String cardno;
+    private static EditText mTxtBarcode;
     private boolean lockScreen = true;
 
     VDOFragment vdo = new VDOFragment();
     ImageFragment img = new ImageFragment();
     private View mFragment;
+    private String deviceId;
+    private String barcode;
+
+    private String WCFHost;
+    private String WCFPost;
+    private String EncodePWD;
+    private CountDownTimer countDownTimer;
+    private TextView mLblCompName;
+    private Handler handler;
+    private Runnable runClearLabel;
+
+    @SuppressLint("MissingPermission")
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+
+            case RequestPermissionCode:
+
+                if (grantResults.length > 0) {
+
+                    boolean GetAccountPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean ReadPhoneStatePermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+                    if (GetAccountPermission) {
+
+                    }
+
+                    if (ReadPhoneStatePermission) {
+
+                    }
+
+                    if (GetAccountPermission && ReadPhoneStatePermission) {
+                        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                        deviceId = telephonyManager != null ? telephonyManager.getDeviceId() : null;
+                        Toast.makeText(CheckPriceActivity.this, "Permission Granted", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(CheckPriceActivity.this, "Permission Denied", Toast.LENGTH_LONG).show();
+
+                    }
+
+                }
+
+                break;
+        }
+    }
+
+
+    protected class GetDataRep_ProdInfoJS extends AsyncTask<String, Void, String> {
+//        private ProgressDialog dialog = new ProgressDialog(CheckPriceActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+//            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//            dialog.setMessage("Please wait , verify terminal.");
+//            dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONObject json = new JSONObject(s);
+                if (json.getBoolean("Return")) {
+                    if (json.getString("Exception").equals("")) {
+
+                        JSONObject data = new JSONObject(json.getString("Data"));
+                        String CompanyName = data.getString("CompanyName");
+                        String CardType = data.getString("ProdCode");
+                        String CardDesc = data.getString("ProdName");
+                        String PriceLabel = data.getString("PriceLabel");
+                        String PricePos = data.getString("PricePos");
+
+                        mLblCardTypeValue.setText(CardType);
+                        mLblCardTypeValue.setText(CardType);
+                        mLblCardDescValue.setText(CardDesc);
+                        mLblBalance.setText(PriceLabel);
+                        mLblBalanceValue.setText(PricePos);
+                    } else {
+                        mLblCardTypeValue.setText("");
+                        mLblCardDescValue.setText(getResources().getString(R.string.alert_barcode_not_found));
+                        mLblBalance.setText("");
+                        mLblBalanceValue.setText("");
+//                        showDialogDataInfo(getResources().getString(R.string.app_name), "Card not found.");
+                    }
+                    if (barcode.equals(Prefs.getString(ConfigBean.COLUMN_PWD_TOUCHLOCK, "USER275"))) {
+                        hideSystemUI(true);
+                        lockScreen = !lockScreen;
+                        blockTouch(lockScreen);
+                        if (lockScreen) {
+                            Toast.makeText(CheckPriceActivity.this, "Touch screen lock.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(CheckPriceActivity.this, "Touch screen unlock.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                } else {
+                    Log.i("dlg", json.getString("Exception"));
+                    showDialogDataInfo(getResources().getString(R.string.app_name), json.getString("Exception"));
+                }
+                mLblCardNameValue.setText(barcode);
+                mTxtBarcode.setText("");
+                mTxtBarcode.requestFocus();
+
+            } catch (Exception aE) {
+                Log.d("dlg", "onPostExecute  Exception : " + aE.getMessage());
+            }
+
+//            dialog.dismiss();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String output = CallWebService.GetDataRep_ProdInfoJS(params[0], params[1], params[2], params[3], params[4]);
+            Log.i("dlg", "doInBackground: " + output);
+            return output;
+        }
+    }
+
+    protected class CloseLicModule extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONObject json = new JSONObject(s);
+                if (json.getBoolean("Return")) {
+                    if (json.getString("Exception").equals("")) {
+
+                    } else {
+                        showDialogDataInfo(getResources().getString(R.string.app_name), json.getString("Exception"));
+                    }
+                } else {
+                    Log.i("dlg", json.getString("Exception"));
+                    showDialogDataInfo(getResources().getString(R.string.app_name), json.getString("Exception"));
+                }
+
+            } catch (Exception aE) {
+                Log.d("dlg", "onPostExecute  Exception : " + aE.getMessage());
+            }
+
+//            dialog.dismiss();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String output = CallWebService.CloseLicModule(params[0], params[1], params[2], params[3]);
+            Log.i("dlg", "CloseLicModule: " + output);
+            return output;
+        }
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -86,25 +248,35 @@ public class CheckPriceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_price_check);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+
         hideSystemUI(lockScreen);
         blockTouch(lockScreen);
+
+        handler = new Handler();
+
+        //EnableRuntimePermission();
+        deviceId = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
+        WCFHost = Prefs.getString(ConfigBean.COLUMN_WCF_HOST, "");
+        WCFPost = Prefs.getString(ConfigBean.COLUMN_WCF_PORT, "");
+        EncodePWD = Prefs.getString(ConfigBean.COLUMN_ENCODE_PWD, "");
 
         //declare
         String appPath = Utils.GetAppPath(getApplicationContext());
         String marqueeFolder = Prefs.getString(ConfigBean.COLUMN_MARQUEE_FOLDER, "");
         String MarQueeFile = Prefs.getString(ConfigBean.COLUMN_MARQUEE_FILE, "");
         int MarQueeLoop = Integer.valueOf(Prefs.getString(ConfigBean.COLUMN_MARQUEE_LOOP, "1"));
-        SocketPort = Integer.valueOf(Prefs.getString(ConfigBean.COLUMN_SOCKET_PORT, "8888"));
         String SDCardMarqueefile = appPath + "/" + marqueeFolder + "/" + MarQueeFile;
 
         //Bingdin Widget
-        mLblCompName = (TextView) findViewById(R.id.lblCompName);
-        mLblCardNameValue = (TextView) findViewById(R.id.lblCardNameValue);
-        mLblCardTypeValue = (TextView) findViewById(R.id.lblCardTypeValue);
-        mLblCardDescValue = (TextView) findViewById(R.id.lblCardDescValue);
-        mLblBalance = (TextView) findViewById(R.id.lblBalance);
-        mLblBalanceValue = (TextView) findViewById(R.id.lblBalanceValue);
-        mTxtBarcode = (EditText) findViewById(R.id.txtBarcode);
+        mLblCompName = findViewById(R.id.lblCompName);
+        mLblCardNameValue = findViewById(R.id.lblCardNameValue);
+        mLblCardTypeValue = findViewById(R.id.lblCardTypeValue);
+        mLblCardDescValue = findViewById(R.id.lblCardDescValue);
+        mLblBalance = findViewById(R.id.lblBalance);
+        mLblBalanceValue = findViewById(R.id.lblBalanceValue);
+        mTxtBarcode = findViewById(R.id.txtBarcode);
 
         mFragment = findViewById(R.id.fragment);
 
@@ -114,37 +286,36 @@ public class CheckPriceActivity extends AppCompatActivity {
             openFragment(vdo);
         }
 
-        mLblCompName.setText(Prefs.getString(TerminalBean.COLUMN_COMPANY_NAME, ""));
+//        mLblCompName.setText(Prefs.getString(TerminalBean.COLUMN_COMPANY_NAME, ""));
 
         mTxtBarcode.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                if (event.getAction() != KeyEvent.ACTION_DOWN)
+                    return true;
+
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+//                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     //do something here
-                    if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                        cardno = mTxtBarcode.getText().toString();
-//                        new GetCardRemainOrUsedTask().execute(url, EncodePWD, cardno);
-                        new CountDownTimer(20000, 1000) {
+                    barcode = mTxtBarcode.getText().toString();
+                    Log.d("dlg", "deviceId: " + deviceId);
+                    new GetDataRep_ProdInfoJS().execute(WCFHost, WCFPost, EncodePWD, deviceId, barcode);
+//                    countDownTimer.cancel();
 
-                            @Override
-                            public void onTick(long millisUntilFinished) {
-                                // TODO Auto-generated method stub
-
-                            }
-
-                            @Override
-                            public void onFinish() {
-                                // TODO Auto-generated method stub
-                                mLblCardNameValue.setText("");
-                                mLblCardDescValue.setText("");
-                                mLblCardTypeValue.setText("");
-                                mLblBalance.setText("");
-                                mLblBalanceValue.setText("");
-
-                            }
-                        }.start();
-                        return true;
-                    }
+                    handler.removeCallbacks(runClearLabel);
+                    runClearLabel = new Runnable() {
+                        @Override
+                        public void run() {
+                            mLblCardNameValue.setText("");
+                            mLblCardDescValue.setText("");
+                            mLblCardTypeValue.setText("");
+                            mLblBalance.setText("");
+                            mLblBalanceValue.setText("");
+                            handler.removeCallbacks(runClearLabel);
+                        }
+                    };
+                    handler.postDelayed(runClearLabel, 20000);
+                    return true;
                 }
                 return false;
             }
@@ -153,7 +324,7 @@ public class CheckPriceActivity extends AppCompatActivity {
         File file_marquee = new File(SDCardMarqueefile);
         if (file_marquee.exists()) {
             String text = readTextFilePath(SDCardMarqueefile, MarQueeLoop);
-            marqueeTextFragment = new MarqueeTextFragment();
+            MarqueeTextFragment marqueeTextFragment = new MarqueeTextFragment();
             marqueeTextFragment.setMarqueeInfo(
                     new MarqueeInfo(text, Utils.getTextColor(theme), 0.08f, Typeface.DEFAULT, false)
             );
@@ -166,11 +337,40 @@ public class CheckPriceActivity extends AppCompatActivity {
 //        InputMethodManager imm = (InputMethodManager) getSystemService(CheckPriceActivity.this.INPUT_METHOD_SERVICE);
 //        imm.hideSoftInputFromWindow(mTxtBarcode.getWindowToken(), 0);
 
-        getCurrentFocus();
-
+//        getCurrentFocus();
+//        View current = getCurrentFocus();
+//        if (current != null) current.clearFocus();
+//
         hideVirtualKeyboard(mTxtBarcode);
         mTxtBarcode.setText("");
+//        mTxtBarcode.requestFocus();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        requestFocusEditText();
+    }
+
+    @Override
+    protected void onStop() {
+        new CloseLicModule().execute(WCFHost, WCFPost, EncodePWD, deviceId);
+        super.onStop();
+    }
+
+    public void requestFocusEditText() {
         mTxtBarcode.requestFocus();
+    }
+
+
+    public void EnableRuntimePermission() {
+
+        ActivityCompat.requestPermissions(CheckPriceActivity.this, new String[]
+                {
+                        GET_ACCOUNTS,
+                        READ_PHONE_STATE
+                }, RequestPermissionCode);
+
     }
 
     public static String readTextFilePath(String path, int loop) {
@@ -185,7 +385,7 @@ public class CheckPriceActivity extends AppCompatActivity {
             StringBuilder stringBuilder = new StringBuilder();
 
             while ((line = bufferedreader.readLine()) != null) {
-                for (int i = 0; i < Integer.valueOf(loop); i++) {
+                for (int i = 0; i < loop; i++) {
                     stringBuilder.append(line);
                     stringBuilder.append('\t');
                 }
@@ -205,10 +405,9 @@ public class CheckPriceActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i;
         switch (item.getItemId()) {
             case R.id.action_get_size:
-                Toast.makeText(this, "Video Size Width :" + (mFragment.getWidth() +", Height :" + + mFragment.getHeight()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Video Size Width :" + (mFragment.getWidth() + ", Height :" + +mFragment.getHeight()), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_get_display_metrics:
                 DisplayMetrics metrics = new DisplayMetrics();
@@ -218,7 +417,7 @@ public class CheckPriceActivity extends AppCompatActivity {
                 float scaleFactor = metrics.density;
                 float widthDp = widthPixels / scaleFactor;
                 float heightDp = heightPixels / scaleFactor;
-                Toast.makeText(this, "(widthPixels,heightPixels):" + (widthDp +", "+ heightDp), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "(widthPixels,heightPixels):" + (widthDp + ", " + heightDp), Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -260,7 +459,7 @@ public class CheckPriceActivity extends AppCompatActivity {
         alertDialog.show();
 
         // Hide after some seconds
-        final Handler handler  = new Handler();
+        final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -286,7 +485,7 @@ public class CheckPriceActivity extends AppCompatActivity {
         editText.setTextIsSelectable(true);
     }
 
-    private void hideSystemUI(boolean b) {
+    public void hideSystemUI(boolean b) {
         if (b) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -296,7 +495,7 @@ public class CheckPriceActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        }else{
+        } else {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION

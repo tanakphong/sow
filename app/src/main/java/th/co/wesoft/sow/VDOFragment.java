@@ -1,6 +1,7 @@
 package th.co.wesoft.sow;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -45,16 +46,25 @@ public class VDOFragment extends Fragment {
         if (file != null) {
             final PlayList pl = new PlayList(file, ext);
 
-            mVideoView = (VideoView) v.findViewById(R.id.vidView);
+            mVideoView = v.findViewById(R.id.vidView);
 
             mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
                     mVideoView.stopPlayback();
                     mVideoView.setVideoPath(vdoPath + "/" + pl.Next().getName());
-//                    mVideoView.setFocusable(false);
-//                    mVideoView.setFocusableInTouchMode(false);
                     mVideoView.start();
+
+                    Activity activity = getActivity();
+                    if (activity instanceof CheckPriceActivity) {
+                        CheckPriceActivity myactivity = (CheckPriceActivity) activity;
+                        myactivity.requestFocusEditText();
+                        myactivity.hideSystemUI(true);
+                    } else if (activity instanceof CheckFoodCourtActivity) {
+                        CheckFoodCourtActivity myactivity = (CheckFoodCourtActivity) activity;
+                        myactivity.requestFocusEditText();
+                        myactivity.hideSystemUI(true);
+                    }
                 }
             });
 
@@ -63,9 +73,18 @@ public class VDOFragment extends Fragment {
 //            MediaController mc = new MediaController(getActivity());
 //            mc.clearFocus();
 //            mVideoView.setMediaController(mc);
-//            mVideoView.setFocusable(false);
-//            mVideoView.setFocusableInTouchMode(false);
             mVideoView.start();
+
+            Activity activity = getActivity();
+            if (activity instanceof CheckPriceActivity) {
+                CheckPriceActivity myactivity = (CheckPriceActivity) activity;
+                myactivity.requestFocusEditText();
+                myactivity.hideSystemUI(true);
+            } else if (activity instanceof CheckFoodCourtActivity) {
+                CheckFoodCourtActivity myactivity = (CheckFoodCourtActivity) activity;
+                myactivity.requestFocusEditText();
+                myactivity.hideSystemUI(true);
+            }
         }
         return v;
     }

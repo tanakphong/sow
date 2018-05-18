@@ -3,20 +3,32 @@ package th.co.wesoft.sow.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by USER275 on 3/9/2018.
  */
 
 public class Display implements Parcelable {
+    @SerializedName("line1")
     String line1;
+    @SerializedName("line2")
     String line2;
+    @SerializedName("line3")
     String line3;
+    @SerializedName("line4")
     String line4;
+    @SerializedName("line5")
     String line5;
+    @SerializedName("line6")
     String line6;
+    @SerializedName("line71")
     String line71;
+    @SerializedName("line72")
     String line72;
+    @SerializedName("line81")
     String line81;
+    @SerializedName("line82")
     String line82;
 
     public Display() {

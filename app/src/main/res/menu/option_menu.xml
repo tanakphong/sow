@@ -7,10 +7,10 @@
         android:orderInCategory="100"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/action_get_display_metrics"
+ <!--   <item android:id="@+id/action_get_display_metrics"
         android:title="Get Display Metrics"
         android:orderInCategory="100"
-        app:showAsAction="never"/>
+        app:showAsAction="never"/>-->
 
     <item android:id="@+id/action_about"
         android:title="About"

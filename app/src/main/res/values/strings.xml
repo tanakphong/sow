@@ -3,14 +3,6 @@
     <string name="image_folder">โฟลเดอร์รูปภาพ</string>
     <string name="vdo_folder">VDO</string>
     <string name="marquee_folder">โฟลเดอร์ข้อความวิ่ง :</string>
-    <string name="comp_name">ชื่อบริษัท</string>
-    <string name="product_or_service">จุดบริการ</string>
-    <string name="card_name_value">123456789</string>
-    <string name="card_type_value">บัตรวีไอพี</string>
-    <string name="card_desc_value">ลูกค้า</string>
-    <string name="use_header">ยอดใช้งาน :</string>
-    <string name="use_value">9999.99</string>
-    <string name="balance_header">คงเหลือ</string>
     <string name="smb_host">ที่อยู่ไฟล์ :</string>
     <string name="smb_host_value">ตัวอย่าง 192.168.0.1/Sub Folder</string>
     <string name="vdo_file">โฟลเดอร์วีดีโอ :</string>
@@ -103,5 +95,15 @@
     <string name="conf_touchlock">กำหนดค่า Touchlock</string>
 
     <string name="alert_card_not_found">ไม่พบบัตร</string>
+    <string name="comp_name" translatable="false">" "</string>
+    <string name="product_or_service" translatable="false">" "</string>
+    <string name="card_name_value" translatable="false">" "</string>
+    <string name="card_type_value" translatable="false">" "</string>
+    <string name="card_desc_value" translatable="false">" "</string>
+    <string name="use_header" translatable="false">" "</string>
+    <string name="use_value" translatable="false">" "</string>
+    <string name="balance_header" translatable="false">" "</string>
+    <string name="alert_barcode_not_found">Barcode not found.</string>
+    <string name="scan_barcode">Scan Barcode</string>
 
 </resources>

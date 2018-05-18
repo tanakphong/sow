@@ -8,7 +8,6 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -87,6 +86,10 @@ public class FoodCourtActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_court);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        if (savedInstanceState == null) {
+            display = new Display();
+        }
+
         hideSystemUI(lockScreen);
 //        blockTouch(lockScreen);
 
@@ -140,7 +143,7 @@ public class FoodCourtActivity extends AppCompatActivity {
 
         //setEvent
         File file_marquee = new File(SDCardMarqueefile);
-        float speed = Prefs.getInt(ConfigBean.COLUMN_MARQUEE_SPEED, 8) / 100;
+        float speed = (float) Prefs.getInt(ConfigBean.COLUMN_MARQUEE_SPEED, 8) / 100;
         if (file_marquee.exists()) {
             String text = readTextFilePath(SDCardMarqueefile, MarQueeLoop);
             marqueeTextFragment = new MarqueeTextFragment();
@@ -164,8 +167,18 @@ public class FoodCourtActivity extends AppCompatActivity {
                     Log.i(TAG, String.format("line[%s]: %s", String.valueOf(i), line[i]));
                 }
                 if (line.length == 10) {
-                    display = new Display(line[0], line[1], line[2], line[3], line[4],
-                            line[5], line[6], line[7], line[8], line[9]);
+
+                    display.setLine1(line[0]);
+                    display.setLine2(line[1]);
+                    display.setLine3(line[2]);
+                    display.setLine4(line[3]);
+                    display.setLine5(line[4]);
+                    display.setLine6(line[5]);
+                    display.setLine71(line[6]);
+                    display.setLine72(line[7]);
+                    display.setLine81(line[8]);
+                    display.setLine82(line[9]);
+
                     mLblCompName.setText(line[0]);
                     mLblProductOrService1.setText(line[1]);
                     mLblProductOrService2.setText(line[2]);
@@ -216,27 +229,31 @@ public class FoodCourtActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-//        outState.putParcelable(DISPLAY, display);
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable(DISPLAY, display);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-//        display = savedInstanceState.getParcelable(DISPLAY);
-//
-//        mLblCompName.setText(display.getLine1());
-//        mLblProductOrService1.setText(display.getLine2());
-//        mLblProductOrService2.setText(display.getLine3());
-//        mLblCardNameValue.setText(display.getLine4());
-//        mLblCardTypeValue.setText(display.getLine5());
-//        mLblCardDescValue.setText(display.getLine6());
-//        mLblUse.setText(display.getLine71());
-//        mLblUseValue.setText(display.getLine72());
-//        mLblBalance.setText(display.getLine81());
-//        mLblBalanceValue.setText(display.getLine82());
+        display = savedInstanceState.getParcelable(DISPLAY);
+
+        display = savedInstanceState.getParcelable(DISPLAY);
+//        display = Parcels.unwrap(savedInstanceState.getParcelable(DISPLAY));
+        Log.d(TAG, "onRestoreInstanceState: " + display.getLine1());
+
+        mLblCompName.setText(display.getLine1());
+        mLblProductOrService1.setText(display.getLine2());
+        mLblProductOrService2.setText(display.getLine3());
+        mLblCardNameValue.setText(display.getLine4());
+        mLblCardTypeValue.setText(display.getLine5());
+        mLblCardDescValue.setText(display.getLine6());
+        mLblUse.setText(display.getLine71());
+        mLblUseValue.setText(display.getLine72());
+        mLblBalance.setText(display.getLine81());
+        mLblBalanceValue.setText(display.getLine82());
     }
 
     public static String readTextFilePath(String path, int loop) {

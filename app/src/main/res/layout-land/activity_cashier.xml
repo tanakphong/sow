@@ -27,8 +27,7 @@
                 android:id="@+id/fragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FF000000"
-                tools:ignore="UselessParent">
+                android:background="#FF000000">
             </FrameLayout>
         </LinearLayout>
 
@@ -42,48 +41,53 @@
 
             <TextView
                 android:id="@+id/lblCompName"
+                style="?custom_textColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_7row_top"
-                style="?custom_textColor"
+                android:maxLines="1"
                 android:text="@string/comp_name"
                 android:textAlignment="center"
                 android:textSize="@dimen/h2" />
 
             <TextView
                 android:id="@+id/lblProductOrService1"
+                style="?custom_textColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_7row_top"
-                style="?custom_textColor"
+                android:maxLines="1"
                 android:text="@string/product_or_service"
                 android:textAlignment="center"
                 android:textSize="@dimen/h3" />
 
             <TextView
                 android:id="@+id/lblCardNameValue"
+                style="?custom_textColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_7row_top"
-                style="?custom_textColor"
+                android:maxLines="1"
                 android:text="@string/card_name_value"
                 android:textSize="@dimen/h4" />
 
             <TextView
                 android:id="@+id/lblCardTypeValue"
+                style="?custom_textColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_7row_top_medium"
-                style="?custom_textColor"
+                android:maxLines="1"
                 android:text="@string/card_type_value"
                 android:textSize="@dimen/h4" />
 
             <TextView
                 android:id="@+id/lblCardDescValue"
+                style="?custom_textColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_7row_top_medium"
-                style="?custom_textColor"
+                android:maxLines="1"
                 android:text="@string/card_desc_value"
                 android:textSize="@dimen/h4" />
 
@@ -107,6 +111,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
+                        android:maxLines="1"
                         android:text="@string/use_header"
                         android:textSize="@dimen/h3" />
                 </LinearLayout>
@@ -120,10 +125,11 @@
 
                     <TextView
                         android:id="@+id/lblUseValue"
+                        style="?custom_textColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
-                        style="?custom_textColor"
+                        android:maxLines="1"
                         android:text="@string/use_value"
                         android:textSize="@dimen/h3v" />
                 </LinearLayout>
@@ -150,6 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
+                        android:maxLines="1"
                         android:text="@string/balance_header"
                         android:textSize="@dimen/h3" />
                 </LinearLayout>
@@ -163,10 +170,11 @@
 
                     <TextView
                         android:id="@+id/lblBalanceValue"
+                        style="?custom_textColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
-                        style="?custom_textColor"
+                        android:maxLines="1"
                         android:text="@string/use_value"
                         android:textSize="@dimen/h3v" />
                 </LinearLayout>

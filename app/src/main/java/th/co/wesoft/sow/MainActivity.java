@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
     boolean doubleBackToExitPressedOnce = false;
     private String TermType, TermCategory, Active;
     private boolean hasTerminal;
+    private String WCFHost;
+    private String WCFPost;
+    private String EncodePWD;
+    private String Url;
 
     // Check Runtime Permission -- BEGIN
     public void checkRuntimPermission() {
@@ -108,6 +112,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    protected class GetDataRep_ProdInfoJS extends AsyncTask<String, Void, String> {
+        private ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+//            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//            dialog.setMessage("Please wait , verify terminal.");
+//            dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+//            dialog.dismiss();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String output = CallWebService.GetDataRep_ProdInfoJS(params[0], params[1], params[2], params[3], params[4]);
+            Log.i("dlg", "doInBackground: " + output);
+            return output;
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,12 +150,12 @@ public class MainActivity extends AppCompatActivity {
                 .setUseDefaultSharedPreference(true)
                 .build();
 
-        String WCFHost = Prefs.getString(ConfigBean.COLUMN_WCF_HOST, "");
-        String WCFPost = Prefs.getString(ConfigBean.COLUMN_WCF_PORT, "");
-        String EncodePWD = Prefs.getString(ConfigBean.COLUMN_ENCODE_PWD, "");
-        String Url = "http://" + WCFHost + ":" + WCFPost + "/WFservice30?wsdl";
+        WCFHost = Prefs.getString(ConfigBean.COLUMN_WCF_HOST, "");
+        WCFPost = Prefs.getString(ConfigBean.COLUMN_WCF_PORT, "");
+        EncodePWD = Prefs.getString(ConfigBean.COLUMN_ENCODE_PWD, "");
+        Url = "http://" + WCFHost + ":" + WCFPost + "/WFservice30?wsdl";
 
-        mBtnProgram = (Button) findViewById(R.id.btnProgram);
+        mBtnProgram = findViewById(R.id.btnProgram);
         mBtnProgram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         HashSet<String> strings = new HashSet<>();
         strings.add("WF-CHECKPOINT-FC");
         strings.add("WF-CHECKPOINT-FL");
-        strings.add("WP-CHECKPOINT");
+//        strings.add("WP-CHECKPOINT");
 
         if (strings.contains(prodType)) {
             if (checkTerminal(Url, EncodePWD)) {
@@ -182,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 case "WF-DISP-SHOP-FC":
                 case "WF-DISP-SHOP-FL":
                 case "WF-DISP-CASHIER":
+                case "WP-DISP-POS":
                     i = new Intent(getApplicationContext(), FoodCourtActivity.class);
                     startActivity(i);
                     break;
@@ -190,10 +221,10 @@ public class MainActivity extends AppCompatActivity {
                     i = new Intent(getApplicationContext(), CheckFoodCourtActivity.class);
                     startActivity(i);
                     break;
-                case "WP-DISP-POS":
-                    i = new Intent(getApplicationContext(), CashierActivity.class);
-                    startActivity(i);
-                    break;
+//                case "WP-DISP-POS":
+//                    i = new Intent(getApplicationContext(), CashierActivity.class);
+//                    startActivity(i);
+//                    break;
                 case "WP-CHECKPOINT":
                     i = new Intent(getApplicationContext(), CheckPriceActivity.class);
                     startActivity(i);
@@ -270,10 +301,11 @@ public class MainActivity extends AppCompatActivity {
         Intent i;
         switch (item.getItemId()) {
             case R.id.action_get_ip:
+
                 Toast.makeText(this, "IP Address :" + Utils.getIPAddress(), Toast.LENGTH_SHORT).show();
                 return true;
-
             case R.id.action_get_display_metrics:
+
                 DisplayMetrics metrics = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(metrics);
                 int widthPixels = metrics.widthPixels;
@@ -281,25 +313,25 @@ public class MainActivity extends AppCompatActivity {
                 float scaleFactor = metrics.density;
                 float widthDp = widthPixels / scaleFactor;
                 float heightDp = heightPixels / scaleFactor;
-                Toast.makeText(this, "(widthPixels,heightPixels):" + (widthDp + ", " + heightDp), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(this, "(widthPixels,heightPixels):" + (widthDp + ", " + heightDp), Toast.LENGTH_LONG).show();
+                return true;
             case R.id.action_about:
+
+                new GetDataRep_ProdInfoJS().execute(WCFHost, WCFPost, EncodePWD, "DV01", "200001");
+
                 try {
                     PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
                     String version = pInfo.versionName;
                     int verCode = pInfo.versionCode;
                     String applicationName = getResources().getString(R.string.app_name);
 
-                    Toast.makeText(this, (applicationName + " " + version + "(" + verCode + ")"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, (applicationName + "@" + version), Toast.LENGTH_LONG).show();
                 } catch (Exception aE) {
 
                 }
                 return false;
-//            case R.id.action_callws:
-//                i = new Intent(getApplicationContext(), CallWSActivity.class);
-//                startActivity(i);
-//                return false;
             case R.id.action_config:
+
                 i = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(i);
                 return false;

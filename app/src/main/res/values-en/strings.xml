@@ -3,14 +3,6 @@
     <string name="image_folder">Photo</string>
     <string name="vdo_folder">VDO</string>
     <string name="marquee_folder">Marquee Folder :</string>
-    <string name="comp_name">Company Co.,Ltd.</string>
-    <string name="product_or_service">Check Point</string>
-    <string name="card_name_value">123456789</string>
-    <string name="card_type_value">VIP Card</string>
-    <string name="card_desc_value">Customer</string>
-    <string name="use_header">Use:</string>
-    <string name="use_value">9999.99</string>
-    <string name="balance_header">Balance</string>
     <string name="smb_host">Host :</string>
     <string name="smb_host_value">e.g. 192.168.0.1/SubFolder</string>
     <string name="vdo_file">VDO Folder :</string>
@@ -72,6 +64,8 @@
     <string name="conf_touchlock">Setting Touchlock</string>
 
     <string name="alert_card_not_found">Card not found.</string>
+    <string name="alert_barcode_not_found">Barcode not found.</string>
+    <string name="scan_barcode">Scan Barcode</string>
 
     <string-array name="color_array">
         <item>Black</item>

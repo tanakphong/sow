@@ -3,6 +3,7 @@ package th.co.wesoft.sow;
 import android.Manifest;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -150,28 +151,28 @@ public class SplashActivity extends AppCompatActivity {
 //        Intent promptInstall = new Intent(Intent.ACTION_VIEW).setDataAndType(myuri,"application/vnd.android.package-archive");
 //        con.startActivity(promptInstall);
 
-//        downloadTask = new DownloadTask(new AsyncResponse() {
-//            @Override
-//            public void processFinish(String output) {
-//                if (isAppUpdate) {
-//
-//                    Intent intent = new Intent(Intent.ACTION_VIEW);
-//                    intent.setDataAndType(Uri.fromFile(appFile), "application/vnd.android.package-archive");
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                    startActivity(intent);
-//                    finish();
-//                    System.exit(0);
-//                } else {
-////                    Toast.makeText(SplashActivity.this, "Download Complete.", Toast.LENGTH_SHORT).show();
+        downloadTask = new DownloadTask(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+                if (isAppUpdate) {
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.fromFile(appFile), "application/vnd.android.package-archive");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivity(intent);
+                    finish();
+                    System.exit(0);
+                } else {
+//                    Toast.makeText(SplashActivity.this, "Download Complete.", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
                     finish();
-//                }
-//
-//            }
-//        });
-//        downloadTask.execute("smb://" + SMBServer + "/", SMBUser, SMBPass, appPath);
+                }
+
+            }
+        });
+        downloadTask.execute("smb://" + SMBServer + "/", SMBUser, SMBPass, appPath);
     }
 
 

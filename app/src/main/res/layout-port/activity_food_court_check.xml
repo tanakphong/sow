@@ -52,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_9row_top"
+                android:maxLines="1"
                 android:text="@string/comp_name"
                 android:textAlignment="center"
                 android:textSize="@dimen/h2"
@@ -63,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_9row_top"
+                android:maxLines="1"
                 android:text="@string/product_or_service"
                 android:textAlignment="center"
                 android:textSize="@dimen/h3"
@@ -74,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_9row_top_medium"
+                android:maxLines="1"
                 android:text="@string/product_or_service"
                 android:textAlignment="center"
                 android:textSize="@dimen/h3"
@@ -99,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_9row_top"
+                android:maxLines="1"
                 android:text="@string/card_name_value"
                 android:textSize="@dimen/h4" />
 
@@ -109,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_9row_top_medium"
+                android:maxLines="1"
                 android:text="@string/card_type_value"
                 android:textSize="@dimen/h4" />
 
@@ -118,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_9row_top_medium"
+                android:maxLines="1"
                 android:text="@string/card_desc_value"
                 android:textSize="@dimen/h4" />
 
@@ -140,6 +146,7 @@
                         style="?custom_textColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:text="@string/use_header"
                         android:textSize="@dimen/h3" />
                 </LinearLayout>
@@ -157,6 +164,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
+                        android:maxLines="1"
                         android:text="@string/use_value"
                         android:textSize="@dimen/h3v" />
                 </LinearLayout>
@@ -182,6 +190,7 @@
                         style="?custom_textColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:text="@string/balance_header"
                         android:textSize="@dimen/h3" />
                 </LinearLayout>
@@ -199,6 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
+                        android:maxLines="1"
                         android:text="@string/use_value"
                         android:textSize="@dimen/h3v" />
                 </LinearLayout>

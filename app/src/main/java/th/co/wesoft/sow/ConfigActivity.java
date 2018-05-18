@@ -121,6 +121,20 @@ public class ConfigActivity extends AppCompatActivity {
         marqueeSpeedValue = (TextView) findViewById(R.id.sb_value);
         marqueeSpeed = (SeekBar) findViewById(R.id.sbMarqueeSpeed);
 
+        mEnglish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeLanguage();
+            }
+        });
+
+        mThailand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeLanguage();
+            }
+        });
+
         marqueeSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 //            int progressChangedValue = 0;
 
@@ -160,6 +174,7 @@ public class ConfigActivity extends AppCompatActivity {
                 switch (parent.getItemAtPosition(position).toString()) {
                     case "WF-DISP-SHOP-FC":
                     case "WF-DISP-SHOP-FL":
+                    case "WF-DISP-CASHIER":
                     case "WP-DISP-POS":
                         mTvSocketPort.setVisibility(View.VISIBLE);
                         mLaySocket.setVisibility(View.VISIBLE);
@@ -313,6 +328,7 @@ public class ConfigActivity extends AppCompatActivity {
                     switch (mSpnProductType.getSelectedItem().toString()) {
                         case "WF-DISP-SHOP-FC":
                         case "WF-DISP-SHOP-FL":
+                        case "WF-DISP-CASHIER":
                         case "WP-DISP-POS":
                             if (mTxtSocketPort.getText().toString().trim().equalsIgnoreCase("")) {
                                 mTxtSocketPort.setError(getString(R.string.validate_text));
@@ -361,7 +377,7 @@ public class ConfigActivity extends AppCompatActivity {
                     Prefs.putString(ConfigBean.COLUMN_THEME, spnTheme.getSelectedItem().toString());
                     Prefs.putString(ConfigBean.COLUMN_PWD_TOUCHLOCK, mTxtPwdTouchLock.getText().toString());
 
-                    HashSet<String> strSet = new HashSet<String>();
+                    HashSet<String> strSet = new HashSet<>();
                     strSet.add(mTxtProgramFolder.getText().toString());
                     strSet.add(mTxtMarqueeFolder.getText().toString());
                     strSet.add(mTxtImageFile.getText().toString());
@@ -377,18 +393,6 @@ public class ConfigActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        Button read = (Button) findViewById(R.id.btnRead);
-//        read.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                String toast = Prefs.getString(ConfigBean.COLUMN_DELIMITER, "no save");
-////                String toast2 = Prefs.getString(ConfigBean.COLUMN_DELIMITER_TEXT, "no save");
-////                Toast.makeText(ConfigActivity.this, toast+", "+toast2, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(ConfigActivity.this, Prefs.getString(ConfigBean.COLUMN_DELIMITER, "Comma")+", "+Prefs.getString(ConfigBean.COLUMN_DELIMITER_TEXT,""), Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
     }
 
     private String getDelimiter(String value) {
