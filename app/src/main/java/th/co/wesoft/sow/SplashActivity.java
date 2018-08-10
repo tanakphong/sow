@@ -230,7 +230,7 @@ public class SplashActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        TextView txt = (TextView) findViewById(R.id.txtBlink);
+                        TextView txt = findViewById(R.id.txtBlink);
                         if (txt.getVisibility() == View.VISIBLE) {
                             txt.setVisibility(View.INVISIBLE);
                         } else {

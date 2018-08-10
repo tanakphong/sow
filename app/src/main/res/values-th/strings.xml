@@ -30,6 +30,7 @@
     <string name="marquee_file_value">marquee.txt</string>
     <string name="marquee_loop">ซ้ำ :</string>
     <string name="marquee_loop_value">1</string>
+    <string name="marquee_speed">ความเร็วข้อความวิ่ง :</string>
 
 
     <string name="imp_delimiter">ตัวแบ่ง</string>
@@ -91,13 +92,9 @@
     </string-array>
 
     <string-array name="programstype_array">
-        <item>WF-DISP-SHOP-FC</item>
-        <item>WF-DISP-SHOP-FL</item>
-        <item>WF-DISP-CASHIER</item>
-        <item>WF-CHECKPOINT-FC</item>
-        <item>WF-CHECKPOINT-FL</item>
-        <item>WP-CHECKPOINT</item>
-        <item>WP-DISP-POS</item>
+        <item>WeDigital Signage</item>
+        <item>Price Checker</item>
+        <item>Available Value Checker</item>
     </string-array>
 
 </resources>

@@ -590,7 +590,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/text_height"
                         android:gravity="center_vertical"
-                        android:text="@string/marquee_folder"
+                        android:text="@string/marquee_speed"
                         android:textSize="@dimen/config_h2" />
                 </LinearLayout>
 

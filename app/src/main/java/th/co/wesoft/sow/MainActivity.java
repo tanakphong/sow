@@ -213,11 +213,13 @@ public class MainActivity extends AppCompatActivity {
                 case "WF-DISP-SHOP-FL":
                 case "WF-DISP-CASHIER":
                 case "WP-DISP-POS":
+                case "WeDigital Signage":
                     i = new Intent(getApplicationContext(), FoodCourtActivity.class);
                     startActivity(i);
                     break;
                 case "WF-CHECKPOINT-FC":
                 case "WF-CHECKPOINT-FL":
+                case "Available Value Checker":
                     i = new Intent(getApplicationContext(), CheckFoodCourtActivity.class);
                     startActivity(i);
                     break;
@@ -226,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
 //                    startActivity(i);
 //                    break;
                 case "WP-CHECKPOINT":
+                case "Price Checker":
                     i = new Intent(getApplicationContext(), CheckPriceActivity.class);
                     startActivity(i);
                     break;

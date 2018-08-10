@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">WSDv1.0</string>
+    <string name="app_name" translatable="false">WeDigital Signage &amp; Checker</string>
     <string name="image_folder">โฟลเดอร์รูปภาพ</string>
     <string name="vdo_folder">VDO</string>
     <string name="marquee_folder">โฟลเดอร์ข้อความวิ่ง :</string>
+    <string name="marquee_speed">Marquee Speed :</string>
     <string name="smb_host">ที่อยู่ไฟล์ :</string>
     <string name="smb_host_value">ตัวอย่าง 192.168.0.1/Sub Folder</string>
     <string name="vdo_file">โฟลเดอร์วีดีโอ :</string>
@@ -77,13 +78,9 @@
     </string-array>
 
     <string-array name="programstype_array">
-        <item>WF-DISP-SHOP-FC</item>
-        <item>WF-DISP-SHOP-FL</item>
-        <item>WF-DISP-CASHIER</item>
-        <item>WF-CHECKPOINT-FC</item>
-        <item>WF-CHECKPOINT-FL</item>
-        <item>WP-CHECKPOINT</item>
-        <item>WP-DISP-POS</item>
+        <item>WeDigital Signage</item>
+        <item>Price Checker</item>
+        <item>Available Value Checker</item>
     </string-array>
     <string name="conf_lang_english">อังกฤษ</string>
     <string name="conf_lang_thailand">ไทย</string>

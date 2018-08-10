@@ -176,6 +176,7 @@ public class ConfigActivity extends AppCompatActivity {
                     case "WF-DISP-SHOP-FL":
                     case "WF-DISP-CASHIER":
                     case "WP-DISP-POS":
+                    case "WeDigital Signage":
                         mTvSocketPort.setVisibility(View.VISIBLE);
                         mLaySocket.setVisibility(View.VISIBLE);
                         mSocketDelimiter.setVisibility(View.VISIBLE);
@@ -186,6 +187,8 @@ public class ConfigActivity extends AppCompatActivity {
                     case "WF-CHECKPOINT-FC":
                     case "WF-CHECKPOINT-FL":
                     case "WP-CHECKPOINT":
+                    case "Price Checker":
+                    case "Available Value Checker":
                         mTvSocketPort.setVisibility(View.GONE);
                         mLaySocket.setVisibility(View.GONE);
                         mSocketDelimiter.setVisibility(View.GONE);
