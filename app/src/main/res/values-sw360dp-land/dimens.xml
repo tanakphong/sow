@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="h2">20sp</dimen>
-    <dimen name="h3">18sp</dimen>
-    <dimen name="h4">16sp</dimen>
-    <dimen name="h3v">24sp</dimen>
+    <dimen name="h2">16sp</dimen>
+    <dimen name="h3">14sp</dimen>
+    <dimen name="h4">12sp</dimen>
+    <dimen name="h3v">16sp</dimen>
     <dimen name="padding">2dp</dimen>
-    <dimen name="text_height">48dp</dimen>
+    <dimen name="text_height">42dp</dimen>
     <dimen name="padding16">16dp</dimen>
+
+    <dimen name="margin_10row_top">8dp</dimen>
+    <dimen name="margin_10row_top_medium">6dp</dimen>
 
     <dimen name="margin_8row_top">16dp</dimen>
     <dimen name="margin_8row_top_medium">12dp</dimen>

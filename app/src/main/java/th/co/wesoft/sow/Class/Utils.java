@@ -23,41 +23,41 @@ import th.co.wesoft.sow.R;
  * Created by USER275 on 9/6/2017.
  */
 
-public  class Utils {
+public class Utils {
 
     public static int setTheme(String theme) {
         int resTheme;
 //        <!--Black White Red Green Blue Dark Blue Yellow Orange Pink-->
-        switch (theme){
+        switch (theme) {
             case "Black":
-                resTheme= R.style.AppTheme_Black;
+                resTheme = R.style.AppTheme_Black;
                 break;
             case "White":
-                resTheme= R.style.AppTheme_White;
+                resTheme = R.style.AppTheme_White;
                 break;
             case "Red":
-                resTheme= R.style.AppTheme_Red;
+                resTheme = R.style.AppTheme_Red;
                 break;
             case "Green":
-                resTheme= R.style.AppTheme_Green;
+                resTheme = R.style.AppTheme_Green;
                 break;
             case "Blue":
-                resTheme= R.style.AppTheme_Blue;
+                resTheme = R.style.AppTheme_Blue;
                 break;
             case "Dark Blue":
-                resTheme= R.style.AppTheme_DarkBlue;
+                resTheme = R.style.AppTheme_DarkBlue;
                 break;
             case "Yellow":
-                resTheme= R.style.AppTheme_Yellow;
+                resTheme = R.style.AppTheme_Yellow;
                 break;
             case "Orange":
-                resTheme= R.style.AppTheme_Orange;
+                resTheme = R.style.AppTheme_Orange;
                 break;
             case "Pink":
-                resTheme= R.style.AppTheme_Pink;
+                resTheme = R.style.AppTheme_Pink;
                 break;
             default:
-                resTheme= R.style.AppTheme_DarkBlue;
+                resTheme = R.style.AppTheme_DarkBlue;
         }
         return resTheme;
 
@@ -66,36 +66,36 @@ public  class Utils {
     public static int getTextColor(String theme) {
         int resColor;
 //        <!--Black White Red Green Blue Dark Blue Yellow Orange Pink-->
-        switch (theme){
+        switch (theme) {
             case "Black":
-                resColor= Color.WHITE;
+                resColor = Color.WHITE;
                 break;
             case "White":
-                resColor= Color.BLACK;
+                resColor = Color.BLACK;
                 break;
             case "Red":
-                resColor= Color.WHITE;
+                resColor = Color.WHITE;
                 break;
             case "Green":
-                resColor= Color.WHITE;
+                resColor = Color.WHITE;
                 break;
             case "Blue":
-                resColor= Color.WHITE;
+                resColor = Color.WHITE;
                 break;
             case "Dark Blue":
-                resColor= Color.WHITE;
+                resColor = Color.WHITE;
                 break;
             case "Yellow":
-                resColor= Color.BLACK;
+                resColor = Color.BLACK;
                 break;
             case "Orange":
-                resColor= Color.BLACK;
+                resColor = Color.BLACK;
                 break;
             case "Pink":
-                resColor= Color.BLACK;
+                resColor = Color.BLACK;
                 break;
             default:
-                resColor= Color.WHITE;
+                resColor = Color.WHITE;
         }
         return resColor;
 
@@ -111,7 +111,9 @@ public  class Utils {
                     if (!inetAddress.isLoopbackAddress()) {
                         inetAddress.getAddress();
                         if (!inetAddress.getHostAddress().toString().startsWith("fe80")) {
-                            tmpNetwork.add(inetAddress.getHostAddress().toString());
+                            if (!inetAddress.getHostAddress().toString().startsWith("2403")) {
+                                tmpNetwork.add(inetAddress.getHostAddress().toString());
+                            }
                         }
                     }
                 }
@@ -123,33 +125,31 @@ public  class Utils {
         }
     }
 
-    public static String GetAppPath(Context context){
+    public static String GetAppPath(Context context) {
         String extStoreage = Environment.getExternalStorageDirectory().getAbsolutePath();
         String packageName = context.getPackageName();
-        return  extStoreage + "/Android/data/" + packageName;
+        return extStoreage + "/Android/data/" + packageName;
     }
 
-    public static void CreateDirectory(File fileOrFolder){
+    public static void CreateDirectory(File fileOrFolder) {
         if (!fileOrFolder.exists()) {
             fileOrFolder.mkdirs();
         }
     }
 
-    public static void RemoveDirectory(File fileOrFolder){
-        if (fileOrFolder.isDirectory())
-        {
+    public static void RemoveDirectory(File fileOrFolder) {
+        if (fileOrFolder.isDirectory()) {
             String[] children = fileOrFolder.list();
-            for (int i = 0; i < children.length; i++)
-            {
+            for (int i = 0; i < children.length; i++) {
                 new File(fileOrFolder, children[i]).delete();
             }
         }
         fileOrFolder.delete();
     }
 
-    public static boolean DownloadFileFormSMB(SmbFile newfile, File oldfile){
-        try{
-            if(newfile.length() != oldfile.length()) {
+    public static boolean DownloadFileFormSMB(SmbFile newfile, File oldfile) {
+        try {
+            if (newfile.length() != oldfile.length()) {
                 InputStream is = newfile.getInputStream();
                 BufferedInputStream bis = new BufferedInputStream(is);
                 ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -169,10 +169,10 @@ public  class Utils {
                 buffer.close();
                 bis.close();
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch (Exception aE){
+        } catch (Exception aE) {
             aE.printStackTrace();
             return false;
         }

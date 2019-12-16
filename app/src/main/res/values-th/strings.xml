@@ -66,8 +66,12 @@
     <string name="conf_touchlock">กำหนดค่า Touchlock</string>
 
     <string name="alert_card_not_found">ไม่พบบัตร</string>
-    <string name="alert_barcode_not_found">Barcode not found.</string>
-    <string name="scan_barcode">Scan Barcode</string>
+    <string name="alert_barcode_not_found">ไม่พบบาร์โค้ด</string>
+    <string name="scan_barcode">แสกนบาร์โค้ด</string>
+    <string name="per_day">วัน</string>
+    <string name="per_week">สัปดาห์</string>
+    <string name="per_month">เดือน</string>
+    <string name="per_year">ปี</string>
 
 
     <string-array name="color_array">
@@ -95,6 +99,7 @@
         <item>WeDigital Signage</item>
         <item>Price Checker</item>
         <item>Available Value Checker</item>
+<!--        <item>Available Value Checker With Limit</item>-->
     </string-array>
 
 </resources>

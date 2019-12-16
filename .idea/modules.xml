@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/###WeSoft-sow.iml" filepath="$PROJECT_DIR$/###WeSoft-sow.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/sow.iml" filepath="$PROJECT_DIR$/sow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/sow-app.iml" filepath="$PROJECT_DIR$/app/sow-app.iml" />
     </modules>
   </component>
 </project>

@@ -89,37 +89,37 @@ public class ConfigActivity extends AppCompatActivity {
                 .setPrefsName(getPackageName())
                 .setUseDefaultSharedPreference(true)
                 .build();
-        mTvWCFHost = (TextView) findViewById(R.id.tvWCFHost);
-        mLayWCFHost = (LinearLayout) findViewById(R.id.layWCFHost);
-        mLayPWD = (LinearLayout) findViewById(R.id.layEncodePWD);
-        mTvSocketPort = (TextView) findViewById(R.id.tvSocketPort);
-        mLaySocket = (LinearLayout) findViewById(R.id.laySocketPort);
-        mSocketDelimiter = (LinearLayout) findViewById(R.id.laySocketDelimiter);
+        mTvWCFHost = findViewById(R.id.tvWCFHost);
+        mLayWCFHost = findViewById(R.id.layWCFHost);
+        mLayPWD = findViewById(R.id.layEncodePWD);
+        mTvSocketPort = findViewById(R.id.tvSocketPort);
+        mLaySocket = findViewById(R.id.laySocketPort);
+        mSocketDelimiter = findViewById(R.id.laySocketDelimiter);
 
 
-        mEnglish = (RadioButton) findViewById(R.id.rdoEnglish);
-        mThailand = (RadioButton) findViewById(R.id.rdoThailand);
-        mTxtSMBServer = (EditText) findViewById(R.id.txtSMBServer);
-        mTxtSMBUser = (EditText) findViewById(R.id.txtSMBUser);
-        mTxtSMBPass = (EditText) findViewById(R.id.txtSMBPass);
-        mRdoImage = (RadioButton) findViewById(R.id.rdoImage);
-        mRdoVDO = (RadioButton) findViewById(R.id.rdoVDO);
-        mTxtVDOFile = (EditText) findViewById(R.id.txtVDOFile);
-        mTxtProgramFolder = (EditText) findViewById(R.id.txtProgramFolder);
-        mTxtMarqueeFolder = (EditText) findViewById(R.id.txtMarqueeFolder);
-        mTxtImageFile = (EditText) findViewById(R.id.txtImageFile);
-        mTxtImageLoop = (EditText) findViewById(R.id.txtImageLoop);
-        mTxtMarQueeFile = (EditText) findViewById(R.id.txtMarQueeFile);
-        mTxtMarQueeLoop = (EditText) findViewById(R.id.txtMarQueeLoop);
+        mEnglish = findViewById(R.id.rdoEnglish);
+        mThailand = findViewById(R.id.rdoThailand);
+        mTxtSMBServer = findViewById(R.id.txtSMBServer);
+        mTxtSMBUser = findViewById(R.id.txtSMBUser);
+        mTxtSMBPass = findViewById(R.id.txtSMBPass);
+        mRdoImage = findViewById(R.id.rdoImage);
+        mRdoVDO = findViewById(R.id.rdoVDO);
+        mTxtVDOFile = findViewById(R.id.txtVDOFile);
+        mTxtProgramFolder = findViewById(R.id.txtProgramFolder);
+        mTxtMarqueeFolder = findViewById(R.id.txtMarqueeFolder);
+        mTxtImageFile = findViewById(R.id.txtImageFile);
+        mTxtImageLoop = findViewById(R.id.txtImageLoop);
+        mTxtMarQueeFile = findViewById(R.id.txtMarQueeFile);
+        mTxtMarQueeLoop = findViewById(R.id.txtMarQueeLoop);
 //        mTxtProductType = (EditText) findViewById(R.id.txtProductType);
-        mTxtWCFHost = (EditText) findViewById(R.id.txtWCFHost);
-        mTxtWCFPost = (EditText) findViewById(R.id.txtWCFPost);
-        mTxtEncodePWD = (EditText) findViewById(R.id.txtEncodePWD);
-        mTxtSocketPort = (EditText) findViewById(R.id.txtSocketPort);
-        mTxtPwdTouchLock = (EditText) findViewById(R.id.txtPwdTouchLock);
+        mTxtWCFHost = findViewById(R.id.txtWCFHost);
+        mTxtWCFPost = findViewById(R.id.txtWCFPost);
+        mTxtEncodePWD = findViewById(R.id.txtEncodePWD);
+        mTxtSocketPort = findViewById(R.id.txtSocketPort);
+        mTxtPwdTouchLock = findViewById(R.id.txtPwdTouchLock);
 
-        marqueeSpeedValue = (TextView) findViewById(R.id.sb_value);
-        marqueeSpeed = (SeekBar) findViewById(R.id.sbMarqueeSpeed);
+        marqueeSpeedValue = findViewById(R.id.sb_value);
+        marqueeSpeed = findViewById(R.id.sbMarqueeSpeed);
 
         mEnglish.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,10 +159,10 @@ public class ConfigActivity extends AppCompatActivity {
         });
 
 
-        mBtnSave = (Button) findViewById(R.id.btnSave);
+        mBtnSave = findViewById(R.id.btnSave);
 
 
-        mSpnProductType = (Spinner) findViewById(R.id.spnProductType);
+        mSpnProductType = findViewById(R.id.spnProductType);
         ArrayAdapter<CharSequence> adpProgramType = ArrayAdapter.createFromResource(this,
                 R.array.programstype_array, android.R.layout.simple_spinner_item);
         adpProgramType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -189,6 +189,7 @@ public class ConfigActivity extends AppCompatActivity {
                     case "WP-CHECKPOINT":
                     case "Price Checker":
                     case "Available Value Checker":
+                    case "Available Value Checker With Limit":
                         mTvSocketPort.setVisibility(View.GONE);
                         mLaySocket.setVisibility(View.GONE);
                         mSocketDelimiter.setVisibility(View.GONE);

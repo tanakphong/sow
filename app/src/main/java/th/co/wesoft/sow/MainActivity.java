@@ -175,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
         HashSet<String> strings = new HashSet<>();
         strings.add("WF-CHECKPOINT-FC");
         strings.add("WF-CHECKPOINT-FL");
+        strings.add("Price Checker");
+        strings.add("Available Value Checker");
 //        strings.add("WP-CHECKPOINT");
 
         if (strings.contains(prodType)) {
@@ -217,10 +219,14 @@ public class MainActivity extends AppCompatActivity {
                     i = new Intent(getApplicationContext(), FoodCourtActivity.class);
                     startActivity(i);
                     break;
-                case "WF-CHECKPOINT-FC":
-                case "WF-CHECKPOINT-FL":
+//                case "WF-CHECKPOINT-FC":
+//                case "WF-CHECKPOINT-FL":
+//                case "Available Value Checker":
+//                    i = new Intent(getApplicationContext(), CheckFoodCourtActivity.class);
+//                    startActivity(i);
+//                    break;
                 case "Available Value Checker":
-                    i = new Intent(getApplicationContext(), CheckFoodCourtActivity.class);
+                    i = new Intent(getApplicationContext(), CheckFoodCourtWithLimitActivity.class);
                     startActivity(i);
                     break;
 //                case "WP-DISP-POS":
@@ -364,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean checkLicence() {
-        if (TermType.equals("C") &&
+        if (TermType.equals("S") &&
                 TermCategory.equals("T") &&
                 Active.equals("Y")) {
             return true;

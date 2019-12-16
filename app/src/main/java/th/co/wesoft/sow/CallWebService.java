@@ -152,21 +152,23 @@ public class CallWebService {
 //            Log.i("dlg", "soap request " + androidHttpTransport.requestDump);
 //            Log.i("dlg", "soap response" + androidHttpTransport.responseDump);
 //            return "{\"Return\":\"" + String.valueOf(soapObj.getProperty(0)) + "\",\"Exception\":\"" + String.valueOf(soapObj.getProperty(1)) + "\",\"Data\":\"\"}";
-            return "{\"Return\":\"" + String.valueOf(soapObj.getProperty(0)) +
-                    "\",\"Exception\":\"" + String.valueOf(soapObj.getProperty(1)) +
-                    "\",\"CardPolicy\":\"" + String.valueOf(soapObj.getProperty(2)) +
-                    "\",\"CardTypeCode\":\"" + String.valueOf(soapObj.getProperty(3)) +
-                    "\",\"CardTypeDesc\":\"" + String.valueOf(soapObj.getProperty(4)) +
-                    "\",\"RemainWithReserve\":\"" + String.valueOf(soapObj.getProperty(5)) +
-                    "\",\"Reserve\":\"" + String.valueOf(soapObj.getProperty(6)) +
-                    "\",\"UsedValue\":\"" + String.valueOf(soapObj.getProperty(7)) +
-                    "\",\"CreditBalance\":\"" + String.valueOf(soapObj.getProperty(8)) +
-                    "\",\"CardExp\":\"" + String.valueOf(soapObj.getProperty(9)) +
-                    "\",\"CardExpText\":\"" + String.valueOf(soapObj.getProperty(10)) +
-                    "\",\"CreditBalanceText\":\"" + String.valueOf(soapObj.getProperty(11)) +
-                    "\",\"RemainWithReserveText\":\"" + String.valueOf(soapObj.getProperty(12)) +
-                    "\",\"UsedValueText\":\"" + String.valueOf(soapObj.getProperty(13)) +
-                    "\",\"MemName\":\"" + String.valueOf(soapObj.getProperty(14)) + "\"}";
+            return "{\"Return\":\"" + soapObj.getProperty(0) +
+                    "\",\"Exception\":\"" + soapObj.getProperty(1) +
+                    "\",\"CardPolicy\":\"" + soapObj.getProperty(2) +
+                    "\",\"CardTypeCode\":\"" + soapObj.getProperty(3) +
+                    "\",\"CardTypeDesc\":\"" + soapObj.getProperty(4) +
+                    "\",\"RemainWithReserve\":\"" + soapObj.getProperty(5) +
+                    "\",\"Reserve\":\"" + soapObj.getProperty(6) +
+                    "\",\"UsedValue\":\"" + soapObj.getProperty(7) +
+                    "\",\"CreditBalance\":\"" + soapObj.getProperty(8) +
+                    "\",\"CardExp\":\"" + soapObj.getProperty(9) +
+                    "\",\"CardExpText\":\"" + soapObj.getProperty(10) +
+                    "\",\"CreditBalanceText\":\"" + soapObj.getProperty(11) +
+                    "\",\"RemainWithReserveText\":\"" + soapObj.getProperty(12) +
+                    "\",\"UsedValueText\":\"" + soapObj.getProperty(13) +
+                    "\",\"MemName\":\"" + soapObj.getProperty(14) +
+                    "\",\"LimitUseUnit\":\"" + soapObj.getProperty(15) +
+                    "\",\"LimitRemain\":\"" + soapObj.getProperty(16) + "\"}";
         } catch (ConnectException aE) {
             Log.i("dlg", "ConnectException " + aE.toString());
             return "{\"Return\":\"true\",\"Exception\":\"Can't connect to WF Service.\"}";

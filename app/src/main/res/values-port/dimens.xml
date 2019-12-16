@@ -13,6 +13,9 @@
     <!--<dimen name="marginB">8dp</dimen>-->
     <!--<dimen name="marginBM">4dp</dimen>-->
 
+    <dimen name="margin_10row_top">10dp</dimen>
+    <dimen name="margin_10row_top_medium">6dp</dimen>
+
     <dimen name="margin_8row_top">12dp</dimen>
     <dimen name="margin_8row_top_medium">8dp</dimen>
 
